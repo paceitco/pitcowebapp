@@ -75,7 +75,7 @@ jobs:
 
       - name: 'Run Web App'
         run: |
-          npx create-react-app react-spa-bootstrap && cd react-spa-bootstrap && npm install bootstrap react-bootstrap
+          cd react-spa-bootstrap && npm install bootstrap react-bootstrap
           npm install
           npm run build --if-present
           npm run test --if-present
