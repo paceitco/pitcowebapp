@@ -25,8 +25,11 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npx create-react-app react-spa-bootstrap && cd react-spa-bootstrap && npm install bootstrap react-bootstrap
+          cd react-spa-bootstrap
+          rm -rf node_modules
           npm install
+          npm install -g react-scripts create-react-app@latest
+          npm install bootstrap react-bootstrap
           npm run build --if-present
           npm run test --if-present
 
@@ -76,8 +79,9 @@ jobs:
       - name: 'Run Web App'
         run: |
           cd react-spa-bootstrap
+          rm -rf node_modules
           npm install
-          npm install -g react-scripts
+          npm install -g react-scripts create-react-app@latest
           npm install bootstrap react-bootstrap
           npm run build --if-present
           npm run test --if-present
