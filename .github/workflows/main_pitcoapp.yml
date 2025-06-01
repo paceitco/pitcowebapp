@@ -24,7 +24,7 @@ jobs:
         run: |
           # cd react-spa-bootstrap
           npm install
-          npm run build
+          # npm run build
 
       - name: Zip for deployment
         run: |
