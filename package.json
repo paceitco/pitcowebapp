@@ -1,14 +1,21 @@
 {
-  "name": "pantrybymarble",
+  "name": "pitcowebapp",
   "main": "expo-router/entry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --clear",
+    "expo-start": "expo start",
+    "expo-start-clear": "expo start --clear",
+    "npx-expo-start-clear": "npx expo start --clear",
+    "expo-install-start": "npm run install && npm run expo-start-clear",
+    "npx-expo-start-web": "npx expo start --web",
+    "npx-start-web-clear": "npx expo start --clear",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "install": "npm install npx react react-native react-native-size-matters react-leaflet react-native-maps expo @expo/server expo-linear-gradient metro metro-runtime styled-components --legacy-peer-deps --force"
   },
   "dependencies": {
     "@expo/server": "^0.6.2",

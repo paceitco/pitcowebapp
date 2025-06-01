@@ -23,18 +23,21 @@ jobs:
       - name: Install dependencies & build
         run: |
           # cd react-spa-bootstrap
+          rm -rf ./node_modules
           npm install
+          npm install npx react react-native react-native-size-matters react-leaflet react-native-maps expo @expo/server expo-linear-gradient metro metro-runtime styled-components --legacy-peer-deps --force
           # npm run build
 
       - name: Zip for deployment
         run: |
           # cd react-spa-bootstrap
+          # cd pitcowebapp
           zip -r release.zip * .*
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: react-app
+          name: pitcowebapp
           path: release.zip
 
   deploy:
@@ -51,11 +54,11 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: react-app
+          name: pitcowebapp
 
       - name: Unzip artifact
         # run: unzip release.zip -d ./react-spa-bootstrap
-        run: unzip release.zip -d ./
+        run: unzip release.zip -d ./pitcowebapp
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -71,4 +74,4 @@ jobs:
           app-name: 'pitcoapp'
           slot-name: 'Production'
           # package: ./react-spa-bootstrap
-          package: ./
+          package: ./pitcowebapp
