@@ -104,11 +104,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: verticalScale(128),
+    marginTop: verticalScale(97),
   },
   navButton: {
     backgroundColor: '#007bff',
-    paddingVertical: verticalScale(15),
+    paddingVertical: verticalScale(12),
     paddingHorizontal: scale(40),
     borderRadius: 4,
   },
