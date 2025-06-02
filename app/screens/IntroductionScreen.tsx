@@ -62,7 +62,7 @@ export const IntroductionScreen = ({ navigation }: any) => {
   
   return (
     // <ScrollView contentContainerStyle={[styles.container, isTablet && styles.containerTablet]}>
-    <ScrollView style={{ paddingTop: 100 }} contentContainerStyle={[styles.container && styles.containerTablet]}>
+    <ScrollView style={{ paddingTop: 100, marginBottom: verticalScale(-150) }} contentContainerStyle={[styles.container && styles.containerTablet]}>
         {/* <SafeAreaView  style={styles.topRow}>
             <TouchableOpacity style={styles.topButton} onPress={() => navigation.navigate('Explore')}>
               <Ionicons name="chevron-back" size={24} color="#556B2F" />

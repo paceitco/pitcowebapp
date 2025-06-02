@@ -1,5 +1,4 @@
 import React from 'react'
-import Skill from '../types/Skill'
 
 const programming_skills = [
     {
@@ -148,20 +147,88 @@ const soft_skills = [
 export const SkillsPartial = ({ navigation }: any) => {
     return (
         <div id="skills-container">
-            <h2 style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>My current progress in my skill-set</h2>
+            <h2 style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Skills Matrix</h2>
             <div
                 id="skill-bars-container"
                 className="row"
                 style={{ width: '90%', margin: 'auto' }}>
+
                 <div id="programming-skills" className="col-lg-6">
-                    <Skill skills_category='Programming Skills' skills={programming_skills} />
-                </div>
-                <div id="devops-skills" className="col-lg-6">
-                    <Skill skills_category='DevOps Skills' skills={devops_skills} />
+                    <div className='skill-bar-container'>
+                        <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Programming Skills</h3>
+                        <div style={{ display: 'block' }}>
+                            {
+                                programming_skills.map((skill, index) => (
+                                    <div key={skill.id} className='row'>
+                                        <div className='col-lg-4'>
+                                            <p style={{ margin: '0px 10px 0px 0px', textAlign: 'left', float: 'left' }}>{skill.title}</p>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <div id={`skill-bar-${index}`} className='skill-bar'>
+                                                <div id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: '5px', backgroundColor: '#ff7400', borderRadius: '5px' }} />
+                                                <div style={{ width: '20px', height: '20px', backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} />
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <p className='skill-level' style={{ textAlign: 'right', float: 'right' }}>{skill.level}%</p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
 
+                <div id="devops-skills" className="col-lg-6">
+                    <div className='skill-bar-container'>
+                        <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>DevOps Skills</h3>
+                        <div style={{ display: 'block' }}>
+                            {
+                                devops_skills.map((skill, index) => (
+                                    <div key={skill.id} className='row'>
+                                        <div className='col-lg-4'>
+                                            <p style={{ margin: '0px 10px 0px 0px', textAlign: 'left', float: 'left' }}>{skill.title}</p>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <div id={`skill-bar-${index}`} className='skill-bar'>
+                                                <div id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: '5px', backgroundColor: '#ff7400', borderRadius: '5px' }} />
+                                                <div style={{ width: '20px', height: '20px', backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} />
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <p className='skill-level' style={{ textAlign: 'right', float: 'right' }}>{skill.level}%</p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+                
                 <div id="soft-skills" className="col-lg-6">
-                    <Skill skills_category='Soft Skills' skills={soft_skills} />
+                    <div className='skill-bar-container'>
+                        <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Soft Skills</h3>
+                        <div style={{ display: 'block' }}>
+                            {
+                                soft_skills.map((skill, index) => (
+                                    <div key={skill.id} className='row'>
+                                        <div className='col-lg-4'>
+                                            <p style={{ margin: '0px 10px 0px 0px', textAlign: 'left', float: 'left' }}>{skill.title}</p>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <div id={`skill-bar-${index}`} className='skill-bar'>
+                                                <div id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: '5px', backgroundColor: '#ff7400', borderRadius: '5px' }} />
+                                                <div style={{ width: '20px', height: '20px', backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} />
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-4'>
+                                            <p className='skill-level' style={{ textAlign: 'right', float: 'right' }}>{skill.level}%</p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
