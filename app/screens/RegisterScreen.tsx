@@ -53,7 +53,7 @@ export const RegisterScreen = ({ navigation }: any) => {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <SafeAreaView style={styles.topSection}>
-        <SafeAreaView  style={styles.topRow}>
+        {/* <SafeAreaView  style={styles.topRow}>
             <TouchableOpacity onPress={handleBack}>
               <Ionicons name="chevron-back" size={28} color="#556B2F" />
             </TouchableOpacity>
@@ -61,18 +61,22 @@ export const RegisterScreen = ({ navigation }: any) => {
             <TouchableOpacity onPress={() => navigation.navigate('Landing')}>
               <Text style={styles.exploreText}>Explore app</Text>
             </TouchableOpacity>
-        </SafeAreaView>
+        </SafeAreaView> */}
 
-        <Text style={styles.welcomeText}>Welcome to</Text>
-        <Text style={styles.appName}>Pantry by Marble</Text>
+        <Text style={styles.welcomeText}>Welcome!</Text>
+        {/* <Text style={styles.appName}>Casper's Resume</Text>
         <Text style={styles.subText}>
-            Sign up for easy payment, collection{"\n"}and much more
-        </Text>
+            You will be redirected to the landing page shortly{"\n"}If not, please click the explore button
+        </Text> */}
         <SafeAreaView  style={styles.greenBar} />
       </SafeAreaView>
+
+      {
+        navigation.navigate('Landing')
+      }
   
-      <SafeAreaView style={styles.registerContainer}>
-        {/* <Text style={styles.header}>Register</Text> */}
+      {/* <SafeAreaView style={styles.registerContainer}>
+        {/* <Text style={styles.header}>Register</Text> *
 
         <Text style={styles.label}>Full Name</Text>
         <TextInput
@@ -127,7 +131,7 @@ export const RegisterScreen = ({ navigation }: any) => {
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Landing')}>
           <Text style={styles.buttonText}>Explore our app</Text>
         </TouchableOpacity>
-      </SafeAreaView>
+      </SafeAreaView> */}
     </ScrollView>
   );  
 };
