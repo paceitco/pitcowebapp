@@ -50,6 +50,8 @@ export const RegisterScreen = ({ navigation }: any) => {
 
   BackHandler.addEventListener('hardwareBackPress', handleBack);
 
+  navigation.navigate('Landing')
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <SafeAreaView style={styles.topSection}>
@@ -72,12 +74,12 @@ export const RegisterScreen = ({ navigation }: any) => {
       </SafeAreaView>
 
       {
-        navigation.navigate('Landing')
+        navigation.navigate('Home')
       }
   
       {/* <SafeAreaView style={styles.registerContainer}>
         {/* <Text style={styles.header}>Register</Text> *
-
+navigation.navigate('Landing')
         <Text style={styles.label}>Full Name</Text>
         <TextInput
           placeholder="Full Name"
