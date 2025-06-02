@@ -103,14 +103,15 @@ const renderStarRating = (rating = 4.5) => {
   );
 };
 
-const LandingScreen: React.FC = () => {
-  const navigation = useNavigation<any>();
+// const LandingScreen: React.FC = () => {
+export const LandingScreen = ({ navigation, style }: any) => {
+  // const navigation = useNavigation<any>();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [searchText, setSearchText] = useState('');
 
   // const intervalId = useRef<NodeJS.Timeout | null>(null);
   // let intervalId: number = 0;
-  let intervalId: NodeJS.Timeout;
+  let intervalId: string | number | NodeJS.Timeout | undefined; //: NodeJS.Timeout;
 
   useEffect(() => {
     intervalId = setInterval(() => {
@@ -319,7 +320,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     width: 20,
     height: 20,
-    tintColor: '#555',
+    // tintColor: '#555',
     marginRight: 8,
   },
   searchInput: {

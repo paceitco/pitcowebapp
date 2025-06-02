@@ -7,7 +7,7 @@
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url(./fonts/Montserrat/Montserrat-Light.ttf) format('truetype');
+    url(/assets/media/fonts/Montserrat/Montserrat-Light.ttf) format('truetype');
   font-weight: 300;
 }
 
@@ -16,7 +16,7 @@
   font-family: 'Source Serif Pro';
   src:
     local('Source Serif Pro'),
-    url(./fonts/SourceSerifPro/SourceSerifPro-Regular.ttf) format('truetype');
+    url(/assets/media/fonts/SourceSerifPro/SourceSerifPro-Regular.ttf) format('truetype');
   font-weight: 400;
 }
 
@@ -25,7 +25,7 @@
   font-family: 'Lora';
   src:
     local('Lora'),
-    url(./fonts/Lora/Lora-Regular.ttf) format('truetype');
+    url(/assets/media/fonts/Lora/Lora-Regular.ttf) format('truetype');
   font-weight: 400;
 }
 
@@ -128,7 +128,7 @@ header {
 }
 
 #slideshow-left-button {
-  background: url(./images/slideshow-left-arrow.svg);
+  background: url(/assets/media/images/slideshow-left-arrow.svg);
   background-repeat: no-repeat !important;
   background-size: 70% 70% !important;
   background-position: 7px 10px !important;
@@ -136,7 +136,7 @@ header {
 
 #slideshow-right-button {
   right: 10px;
-  background: url(./images/slideshow-right-arrow.svg);
+  background: url(/assets/media/images/slideshow-right-arrow.svg);
   background-repeat: no-repeat !important;
   background-size: 70% 70% !important;
   background-position: 15px 10px !important;
@@ -246,7 +246,7 @@ header {
   left: 6vw;
   width: 43vw ;
   height: 100px;
-  background: url(./images/arrow-right-solid.svg);
+  background: url(/assets/media/images/arrow-right-solid.svg);
   background-repeat: no-repeat;
   background-position: 94% 0%;
 }
@@ -257,7 +257,7 @@ header {
   left: 50vw;
   width: 41vw;
   height: 100px;
-  background: url(./images/arrow-left-solid.svg);
+  background: url(/assets/media/images/arrow-left-solid.svg);
   background-repeat: no-repeat;
   background-position: 6% 0%;
 }
@@ -274,7 +274,7 @@ header {
   left: 6vw;
   width: 43vw ;
   height: 100px;
-  background: url(./images/arrow-right-solid.svg);
+  background: url(/assets/media/images/arrow-right-solid.svg);
   background-repeat: no-repeat;
   background-position: 94% 0%;
 }
@@ -285,7 +285,7 @@ header {
   left: 50vw;
   width: 41vw;
   height: 100px;
-  background: url(./images/arrow-left-solid.svg);
+  background: url(/assets/media/images/arrow-left-solid.svg);
   background-repeat: no-repeat;
   background-position: 6% 0%;
 }

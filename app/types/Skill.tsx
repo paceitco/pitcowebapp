@@ -1,10 +1,9 @@
 import React from 'react';
 
-class Skill extends React.Component {
-    render() {
+export const Skill = ({navigation}: any,) => {
         return (
             <div className='skill-bar-container'>
-                <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>{this.props.skills_category}</h3>
+                {/* <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>{this.props.skills_category}</h3>
                 <div style={{ display: 'block' }}>
                     {
                         this.props.skills.map((skill, index) => (
@@ -24,10 +23,9 @@ class Skill extends React.Component {
                             </div>
                         ))
                     }
-                </div>
+                </div> */}
             </div>
         );
     }
-}
 
 export default Skill;
