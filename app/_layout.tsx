@@ -55,12 +55,51 @@ const Landing = () => (
             <Ionicons name="compass-outline" color={focused ? color : '#fff'} size={size} />
           ),
         }}/> */}
-
+      
       <Tab.Screen
-        name="Wishlist"
+        name="Tech Stack"
         component={ProductListingScreen} 
         options={{
-          tabBarLabel: 'Wishlist',
+          tabBarLabel: 'Tech Stack',
+          tabBarLabelStyle: {
+            color: "#fff"
+          },
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="code-outline" color={focused ? color : '#fff'} size={size} />
+          ),
+        }}/>
+
+      <Tab.Screen
+        name="Timeline"
+        component={ProductListingScreen} 
+        options={{
+          tabBarLabel: 'Timeline',
+          tabBarLabelStyle: {
+            color: "#fff"
+          },
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="time-outline" color={focused ? color : '#fff'} size={size} />
+          ),
+        }}/>
+
+      <Tab.Screen
+        name="Background/About Me"
+        component={ProductListingScreen} 
+        options={{
+          tabBarLabel: 'Background',
+          tabBarLabelStyle: {
+            color: "#fff"
+          },
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="person-outline" color={focused ? color : '#fff'} size={size} />
+          ),
+        }}/>
+
+      <Tab.Screen
+        name="Hobbies/Interests"
+        component={ProductListingScreen} 
+        options={{
+          tabBarLabel: 'Hobbies/Interests',
           tabBarLabelStyle: {
             color: "#fff"
           },
@@ -69,44 +108,19 @@ const Landing = () => (
           ),
         }}/>
 
-      {/* <Tab.Screen
-        name="Search"
-        component={ProductListingScreen} 
-        options={{
-          tabBarLabel: 'Search',
-          tabBarLabelStyle: {
-            color: "#fff"
-          },
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name="search-outline" color={focused ? color : '#fff'} size={size} />
-          ),
-        }}/> */}
-
-      <Tab.Screen 
-        name="Cart"
+      <Tab.Screen
+        name="Contact"
         component={CartScreen}
         options={{
-          tabBarLabel: 'Cart',
+          tabBarLabel: 'Contact',
           tabBarLabelStyle: {
             color: "#fff"
           },
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name="cart-outline" color={focused ? color : '#fff'} size={size} />
+            <Ionicons name="mail-outline" color={focused ? color : '#fff'} size={size} />
           ),
         }}/>
 
-      <Tab.Screen
-        name="Profile"
-        component={ProductListingScreen} 
-        options={{
-          tabBarLabel: 'Profile',
-          tabBarLabelStyle: {
-            color: "#fff"
-          },
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name="person-outline" color={focused ? color : '#fff'} size={size} />
-          ),
-        }}/>
     </Tab.Navigator>
 );
 
