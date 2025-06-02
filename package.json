@@ -19,7 +19,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "install": "npm install npx react react-native react-native-size-matters react-leaflet react-native-maps expo @expo/server expo-linear-gradient metro metro-runtime styled-components --legacy-peer-deps --force"
+    "install": "npm install react react-native react-native-web react-scripts metro @types/react-dom @expo/server @expo/cli metro metro-runtime react-native-safe-area-view react-native-safe-area-context react-native-size-matters react-leaflet react-native-maps expo-linear-gradient react-bootstrap styled-components @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context react-native-vector-icons react-native-web --legacy-peer-deps --force"
   },
   "dependencies": {
     "@expo/server": "^0.6.2",
