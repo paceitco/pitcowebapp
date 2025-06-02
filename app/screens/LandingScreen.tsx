@@ -31,6 +31,7 @@ import StackView from './StackView';
 import ProjectsView from './ProjectsView';
 import PetProjectsView from './PetProjectsView';
 import FooterView from './FooterView';
+import NavView from './NavView';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -40,16 +41,23 @@ const LATITUDE_DELTA = 0.0999;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 const IMAGES = [
-  'https://picsum.photos/id/237/200/300',
-  'https://picsum.photos/id/238/200/300',
-  'https://picsum.photos/id/239/200/300',
-  'https://picsum.photos/id/240/200/300',
-  'https://picsum.photos/id/241/200/300',
-  'https://picsum.photos/id/242/200/300',
-  'https://picsum.photos/id/243/200/300',
-  'https://picsum.photos/id/244/200/300',
-  'https://picsum.photos/id/255/200/300',
-  'https://picsum.photos/id/233/200/300',
+  // 'assets/media/slideshow/aurora.jpg',
+  'assets/media/slideshow/cover_photo.jpg',
+  // 'assets/media/slideshow/galaxies.jpg',
+  // 'assets/media/slideshow/oriens-belt.jpg',
+  'assets/media/slideshow/output_320x240.png',
+  'assets/media/slideshow/pc_scaled.png',
+  // 'assets/media/slideshow/rockets-in-the-sky.jpg',
+  'assets/media/slideshow/slide-0.jpg',
+  'assets/media/slideshow/slide-1.jpg',
+  'assets/media/slideshow/slide-2.jpg',
+  'assets/media/slideshow/slide-3.jpg',
+  'assets/media/slideshow/slide-4.jpg',
+  'assets/media/slideshow/slide-5.jpg',
+  'assets/media/slideshow/slide-6.jpg',
+  'assets/media/slideshow/slide-7.jpg',
+  'assets/media/slideshow/slide-8.jpg',
+  'assets/media/slideshow/slide-9.jpg'
 ];
 
 const IMAGE_RATINGS = [4, 3, 5, 2, 5, 4, 3, 5, 1, 4];
@@ -146,7 +154,7 @@ export const LandingScreen = ({ navigation, style }: any) => {
         resizeMode="cover"
       />
 
-      <SafeAreaView style={styles.centeredCompanyName}>
+      {/* <SafeAreaView style={styles.centeredCompanyName}>
         <Text style={styles.companyNameText}>Company Name {currentImageIndex}</Text>
       </SafeAreaView>
 
@@ -162,7 +170,7 @@ export const LandingScreen = ({ navigation, style }: any) => {
 
       <SafeAreaView style={styles.vipTag}>
         <Text style={styles.vipText}>VIP</Text>
-      </SafeAreaView>
+      </SafeAreaView> */}
 
       <SafeAreaView  style={styles.indicatorContainer}>
         {IMAGES.map((_, index) => (
@@ -210,6 +218,22 @@ export const LandingScreen = ({ navigation, style }: any) => {
     </SafeAreaView>
   );
 
+  const renderMobileSearch = () => (
+    <SafeAreaView  style={styles.searchBar}>
+        <Image
+          source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/search--v1.png' }}
+          style={styles.searchIcon}
+        />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          value={searchText}
+          onChangeText={setSearchText}
+          placeholderTextColor="#666"
+        />
+      </SafeAreaView>
+  );
+
   return (
     <LinearGradient
         colors={['#56b4d3', '#348f50', '#192f6a']}
@@ -218,29 +242,22 @@ export const LandingScreen = ({ navigation, style }: any) => {
         style={{ flex: 1 }}
       >
       <ScrollView style={{ paddingTop: 1 }} className="landing-view-container">
+        <NavView key="nav-component" />
+        
         {
           (Platform.OS !== 'web') ? renderMobileTopNav() : ''
         }
-
-        <SafeAreaView  style={styles.searchBar}>
-          <Image
-            source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/search--v1.png' }}
-            style={styles.searchIcon}
-          />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search..."
-            value={searchText}
-            onChangeText={setSearchText}
-            placeholderTextColor="#666"
-          />
-        </SafeAreaView>
+        
+        {
+          (Platform.OS !== 'web') ? renderMobileSearch() : ''
+        }
 
         {renderImageSlide()}
 
         {
           (Platform.OS !== 'web') ? renderCategoryCards() : ''
         }
+
         {/* {renderCategoryCards()} */}
         {/* <ProductListingScreen style={{ marginTop: verticalScale(20), marginBottom: verticalScale(30) }} /> */}
         {/* <Nav key="nav-component" />
@@ -355,7 +372,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: verticalScale(200),
+    height: verticalScale(300),
     borderRadius: scale(10),
   },
   centeredTextContainer: {
