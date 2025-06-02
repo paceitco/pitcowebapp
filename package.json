@@ -2,8 +2,10 @@
   "name": "pitcowebapp",
   "main": "expo-router/entry",
   "version": "1.0.1",
+  "homepage": "Register",
   "scripts": {
-    "start": "serve -s build -p 8080",
+    "start": "npx expo start --web",
+    "start1": "serve -s build -p 8080",
     "start2": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
