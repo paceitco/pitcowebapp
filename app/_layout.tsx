@@ -15,12 +15,17 @@ import LandingScreen from './screens/LandingScreen';
 import './css/app.css';
 import './css/bootstrap.min.css';
 import './css/index.css';
+import CareerTimeline from './screens/CareerTimelineView';
+import IntroductionView from './screens/IntroductionView';
+import StackView from './screens/StackView';
+import NavView from './screens/NavView';
+import { verticalScale } from 'react-native-size-matters';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Landing = () => (
-    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle:{ backgroundColor: 'rgba(98, 138, 20, 0.8)', paddingTop: 10} }}>
+    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle:{ backgroundColor: 'rgba(98, 138, 20, 0.8)', height: verticalScale(20) } }}>
       <Tab.Screen
         name="Home"
         component={LandingScreen} 
@@ -32,12 +37,10 @@ const Landing = () => (
           tabBarIconStyle: {
             color: "#fff"
           },
-          // sceneStyle: {
-          //   className: "app"
-          // },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="storefront-outline" color={focused ? color : '#fff'} size={size} />
           ),
+          tabBarActiveBackgroundColor: '#343434',
         }}/>
       
       {/* <Tab.Screen
@@ -58,7 +61,8 @@ const Landing = () => (
       
       <Tab.Screen
         name="Tech Stack"
-        component={ProductListingScreen} 
+        component={StackView}
+        initialParams={{ renderCustomBackground: true }}
         options={{
           tabBarLabel: 'Tech Stack',
           tabBarLabelStyle: {
@@ -67,11 +71,13 @@ const Landing = () => (
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="code-outline" color={focused ? color : '#fff'} size={size} />
           ),
+          tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
         name="Timeline"
-        component={ProductListingScreen} 
+        component={CareerTimeline}
+        initialParams={{ renderCustomBackground: true }}
         options={{
           tabBarLabel: 'Timeline',
           tabBarLabelStyle: {
@@ -80,11 +86,13 @@ const Landing = () => (
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="time-outline" color={focused ? color : '#fff'} size={size} />
           ),
+          tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
         name="Background/About Me"
-        component={ProductListingScreen} 
+        component={IntroductionView} 
+        initialParams={{ renderCustomBackground: true }}
         options={{
           tabBarLabel: 'Background',
           tabBarLabelStyle: {
@@ -93,6 +101,7 @@ const Landing = () => (
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="person-outline" color={focused ? color : '#fff'} size={size} />
           ),
+          tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
@@ -106,6 +115,7 @@ const Landing = () => (
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="heart-outline" color={focused ? color : '#fff'} size={size} />
           ),
+          tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
@@ -119,6 +129,7 @@ const Landing = () => (
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="mail-outline" color={focused ? color : '#fff'} size={size} />
           ),
+          tabBarActiveBackgroundColor: '#343434',
         }}/>
 
     </Tab.Navigator>
@@ -127,7 +138,8 @@ const Landing = () => (
 export function App() {
   return (
     <CartProvider>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <NavView key="nav-component" />
+      <Stack.Navigator screenOptions={{ headerShown: false, headerLargeTitleShadowVisible: true }} >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         {/* <Stack.Screen name="Landing" component={LandingScreen} /> */}

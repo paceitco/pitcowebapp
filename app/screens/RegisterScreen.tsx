@@ -50,7 +50,7 @@ export const RegisterScreen = ({ navigation }: any) => {
 
   BackHandler.addEventListener('hardwareBackPress', handleBack);
 
-  navigation.navigate('Landing')
+  // navigation.navigate('Landing')
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -73,9 +73,9 @@ export const RegisterScreen = ({ navigation }: any) => {
         <SafeAreaView  style={styles.greenBar} />
       </SafeAreaView>
 
-      {
+      {/* {
         navigation.navigate('Home')
-      }
+      } */}
   
       {/* <SafeAreaView style={styles.registerContainer}>
         {/* <Text style={styles.header}>Register</Text> *
@@ -130,10 +130,11 @@ navigation.navigate('Landing')
           <SafeAreaView  style={styles.hr} />
         </SafeAreaView>
   
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Landing')}>
-          <Text style={styles.buttonText}>Explore our app</Text>
-        </TouchableOpacity>
+        
       </SafeAreaView> */}
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Landing')}>
+          <Text style={styles.buttonText}>Let's Go!</Text>
+        </TouchableOpacity>
     </ScrollView>
   );  
 };

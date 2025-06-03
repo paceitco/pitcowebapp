@@ -62,10 +62,10 @@ export const NavView = ({ navigation, style }: any) => {
 
 const styles = StyleSheet.create({
   header: {
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     width: '100%',
-    height: 300,
+    height: scale(110), // TODO: responsiveness
     // backgroundColor: '#fff',
     // boxShadow: '#000',
     // shadowOffset: { width: 0, height: 15 },
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     elevation: 10,
     zIndex: 100,
     paddingHorizontal: 10,
-    paddingTop: 20,
+    // paddingTop: 20,
     // top: '0px',
     // width: '100%',
     // position: 'absolute',
@@ -106,21 +106,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // marginTop: verticalScale(97),
     // top: verticalScale(97),
-    top: scale(95),
+    top: verticalScale(80),
   },
   navButton: {
     backgroundColor: '#007bff',
-    paddingVertical: verticalScale(15),
+    paddingVertical: verticalScale(12),
     paddingHorizontal: scale(40),
-    borderRadius: 4,
+    borderRadius: 8,
   },
   buttonText: {
     color: '#fff',
   },
   profileImage: {
-    top: verticalScale(7),
-    width: 100,
-    height: 100,
+    top: verticalScale(0),
+    width: scale(34),
+    height: scale(34),
     // backgroundColor: '#ccc', // Placeholder
     // backgroundImage: 'url(/assets/media/navbar/psybr-tech-sec.png)',
     borderRadius: 50,

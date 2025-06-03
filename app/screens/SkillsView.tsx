@@ -1,4 +1,6 @@
+import { HeaderTitle } from '@react-navigation/elements';
 import React from 'react'
+import { SafeAreaView, View } from 'react-native';
 
 const programming_skills = [
     {
@@ -144,16 +146,16 @@ const soft_skills = [
     }
 ];
 
-export const SkillsPartial = ({ navigation }: any) => {
+export const SkillsView = ({ navigation }: any) => {
     return (
-        <div id="skills-container">
-            <h2 style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Skills Matrix</h2>
-            <div
+        <View id="skills-containers">
+            <HeaderTitle style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Skills Matrix</HeaderTitle>
+            <SafeAreaView
                 id="skill-bars-container"
                 className="row"
-                style={{ width: '90%', margin: 'auto' }}>
+                style={{ width: '98%', margin: 'auto' }}>
 
-                <div id="programming-skills" className="col-lg-6">
+                <SafeAreaView id="programming-skills" className="col-lg-6">
                     <div className='skill-bar-container'>
                         <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Programming Skills</h3>
                         <div style={{ display: 'block' }}>
@@ -177,9 +179,9 @@ export const SkillsPartial = ({ navigation }: any) => {
                             }
                         </div>
                     </div>
-                </div>
+                </SafeAreaView>
 
-                <div id="devops-skills" className="col-lg-6">
+                <SafeAreaView id="devops-skills" className="col-lg-6">
                     <div className='skill-bar-container'>
                         <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>DevOps Skills</h3>
                         <div style={{ display: 'block' }}>
@@ -203,9 +205,9 @@ export const SkillsPartial = ({ navigation }: any) => {
                             }
                         </div>
                     </div>
-                </div>
+                </SafeAreaView>
                 
-                <div id="soft-skills" className="col-lg-6">
+                <SafeAreaView id="soft-skills" className="col-lg-6">
                     <div className='skill-bar-container'>
                         <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Soft Skills</h3>
                         <div style={{ display: 'block' }}>
@@ -229,10 +231,10 @@ export const SkillsPartial = ({ navigation }: any) => {
                             }
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </SafeAreaView>
+            </SafeAreaView>
+        </View>
     );
 };
 
-export default SkillsPartial;
+export default SkillsView;

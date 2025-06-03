@@ -24,9 +24,9 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import ProductListingScreen from './ProductListingScreen';
-import IntroductionScreen from './IntroductionScreen';
-import SkillsPartial from './SkillsPartial';
-import CareerTimeline from './CareerTimeline';
+import IntroductionScreen, { IntroductionView } from './IntroductionView';
+import SkillsPartial, { SkillsView } from './SkillsView';
+import CareerTimeline, { CareerTimelineView } from './CareerTimelineView';
 import StackView from './StackView';
 import ProjectsView from './ProjectsView';
 import PetProjectsView from './PetProjectsView';
@@ -242,7 +242,7 @@ export const LandingScreen = ({ navigation, style }: any) => {
         style={{ flex: 1 }}
       >
       <ScrollView style={{ paddingTop: 1 }} className="landing-view-container">
-        <NavView key="nav-component" />
+        {/* <NavView key="nav-component" /> */}
         
         {
           (Platform.OS !== 'web') ? renderMobileTopNav() : ''
@@ -262,9 +262,9 @@ export const LandingScreen = ({ navigation, style }: any) => {
         {/* <ProductListingScreen style={{ marginTop: verticalScale(20), marginBottom: verticalScale(30) }} /> */}
         {/* <Nav key="nav-component" />
         <Slideshow key="slideshow-component" images={images} /> */}
-        <IntroductionScreen key="introduction-component" style={{ marginTop: verticalScale(70) }} />
-        <SkillsPartial key="skills-component" />
-        <CareerTimeline key="career-timeline-component" />
+        <IntroductionView key="introduction-component" style={{ marginTop: verticalScale(70) }} />
+        <SkillsView key="skills-component" />
+        <CareerTimelineView key="career-timeline-component" />
         <StackView key="stack-component" />
         <ProjectsView key="projects-component" />
         <PetProjectsView key="pet-projects-component" />
