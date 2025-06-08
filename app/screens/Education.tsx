@@ -1,91 +1,104 @@
 import React from 'react';
+import { View, Text } from 'react-native';
 
 export const Education = ({ navigation }: any) => {
   return (
-    <div
+    <View
       id="education-info-container"
       className="education-info-container">
-      <div
+      <View
         style={{
-          width: '50px',
-          height: '50px',
-          borderRadius: '50px',
+          width: 50,
+          height: 50,
+          borderRadius: 50,
           backgroundColor: '#ff7400',
           marginLeft: 'auto',
           marginRight: 'auto',
-          border: '1px solid #fff'
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderColor: '#fff'
         }}
       >
-        <p style={{ fontSize: '18px', paddingTop: '10px', color: '#fff', fontWeight: 'bolder', textAlign: 'center' }}>2009</p>
-      </div>
-      <div className='education-info-left'>
-        <div style={{
+        <Text style={{ fontSize: 18, paddingTop: 10, color: '#fff', fontWeight: 'bold', textAlign: 'center' }}>2009</Text>
+      </View>
+
+      <View className='education-info-left'>
+        <View style={{
           width: '86%',
-          marginTop: '-10px',
-          borderRadius: '5px',
+          marginTop: -10,
+          borderRadius: 5,
           backgroundColor: '#eeeeee',
-          padding: '10px'
+          padding: 10
         }}>
-          <p style={{ fontSize: '15px', textAlign: 'center', fontWeight: 'bolder' }}>Rand Park High School ( 20­09 - 2013)</p>
-          <p style={{ fontSize: '15px', textAlign: 'left', fontWeight: 'bolder' }}>Nation Senior Certificate</p>
-          <p style={{ textAlign: 'left' }}>
+          <Text style={{ fontSize: 15, textAlign: 'center', fontWeight: 'bold' }}>Rand Park High School ( 20­09 - 2013)</Text>
+          <Text style={{ fontSize: 15, textAlign: 'left', fontWeight: 'bold' }}>Nation Senior Certificate</Text>
+          <Text style={{ textAlign: 'left' }}>
             This is where Casper would fall in love with the art of programming.
-          </p>
-        </div>
-      </div>
-      <div
+          </Text>
+        </View>
+      </View>
+
+      <View
         id='career-timeline-vbar-2009'
         className='career-timeline-vbar'
         style={{
-          width: '2px',
-          height: '70px',
-          borderRadius: '10px',
+          width: 2,
+          height: 70,
+          borderRadius: 10,
           backgroundColor: '#ff7400',
           marginLeft: 'auto',
           marginRight: 'auto'
         }}
       />
-      <div
+
+      <View
         style={{
-          width: '50px',
-          height: '50px',
-          borderRadius: '50px',
+          width: 50,
+          height: 50,
+          borderRadius: 50,
           backgroundColor: '#ff7400',
           marginLeft: 'auto',
           marginRight: 'auto',
-          border: '1px solid #fff'
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderColor: '#fff'
         }}
       >
-        <p style={{ fontSize: '18px', paddingTop: '10px', color: '#fff', fontWeight: 'bolder', textAlign: 'center' }}>2014</p>
-      </div>
-      <div className='education-info-right'>
-        <div style={{
-          width: '95%',
-          margin: '-10px 0px 0px 14%',
-          borderRadius: '5px',
+        <Text style={{ fontSize: 18, paddingTop: 10, color: '#fff', fontWeight: 'bold', textAlign: 'center' }}>2014</Text>
+      </View>
+
+      <View className='education-info-right'>
+        <View style={{
+          width: 95,
+          marginTop: -10,
+          marginRight: 0,
+          marginBottom: 0,
+          marginLeft: 14,
+          borderRadius: 5,
           backgroundColor: '#eeeeee',
-          padding: '10px'
+          padding: 10
         }}>
-          <p style={{ fontSize: '15px', textAlign: 'center', fontWeight: 'bolder' }}>Univ. of Johannesburg (2014 - 2018)</p>
-          <p style={{ fontSize: '15px', textAlign: 'left', fontWeight: 'bolder' }}>BSc Information Technology</p>
-          <p style={{ textAlign: 'left' }}>
+          <Text style={{ fontSize: 15, textAlign: 'center', fontWeight: 'bold' }}>Univ. of Johannesburg (2014 - 2018)</Text>
+          <Text style={{ fontSize: 15, textAlign: 'left', fontWeight: 'bold' }}>BSc Information Technology</Text>
+          <Text style={{ textAlign: 'left' }}>
             Majoring in Computer Science &amp; Informatics and minoring in Mathematics (Calculus 1 &amp; Discrete 1), Business Management 1 and Information Management 1.
-          </p>
-        </div>
-      </div>
-      <div
+          </Text>
+        </View>
+      </View>
+
+      <View
         id='career-timeline-vbar-2014'
         className='career-timeline-vbar'
         style={{
-          width: '2px',
-          height: '18vh',
-          borderRadius: '10px',
+          width: 2,
+          height: 18,
+          borderRadius: 10,
           backgroundColor: '#ff7400',
           marginLeft: 'auto',
           marginRight: 'auto'
         }}
       />
-    </div>
+    </View>
   );
 }
 

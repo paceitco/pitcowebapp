@@ -4,6 +4,7 @@ import React, { useCallback, useState } from 'react';
 import {
   Alert,
     BackHandler,
+    FlatList,
     Image,
     SafeAreaView,
     ScrollView,
@@ -28,7 +29,105 @@ export const IntroductionView = ({ navigation }: any) => {
   const [password, setPassword] = useState('');
   const route = useRoute();
   const { renderCustomBackground = false } = route.params || {} as any;
-  
+  const [items, setItems] = useState<any[]>([
+    {
+      id: 0,
+      url: 'https://www.oracle.com/',
+      name: 'Java SE',
+      description: ''
+    },
+    {
+      id: 1,
+      url: 'https://www.spring.io/',
+      name: 'Spring Boot API',
+      description: ''
+    },
+    {
+      id: 2,
+      url: 'https://www.typescriptlang.org/',
+      name: 'TypeScript',
+      description: ''
+    },
+    {
+      id: 3,
+      url: 'https://www.angular.io/',
+      name: 'Angular',
+      description: ''
+    },
+    {
+      id: 4,
+      url: 'https://www.electronjs.org/',
+      name: 'ElectronJS',
+      description: ''
+    },
+    {
+      id: 5,
+      url: 'https://www.getbootstrap.com/',
+      name: 'Bootstrap',
+      description: ''
+    },
+    {
+      id: 6,
+      url: 'https://www.expressjs.com/',
+      name: 'ExpressJS',
+      description: ''
+    },
+    {
+      id: 7,
+      url: 'http://www.jade-lang.com/',
+      name: 'Jade Template Engine',
+      description: ''
+    },
+    {
+      id: 8,
+      url: 'http://www.keystonejs.com/',
+      name: 'KeystoneJS',
+      description: ''
+    },
+    {
+      id: 9,
+      url: 'https://www.nginx.com/',
+      name: 'Nginx',
+      description: ''
+    },
+    {
+      id: 10,
+      url: 'https://www.docker.org/',
+      name: 'Docker',
+      description: ''
+    },
+    {
+      id: 11,
+      url: 'https://www.heroku.com/',
+      name: 'Heroku',
+      description: ''
+    },
+    {
+      id: 12,
+      url: 'https://www.letsencrypt.org/',
+      name: 'Let\'s Encrypt',
+      description: ''
+    },
+    {
+      id: 13,
+      url: '#',
+      name: 'Bash',
+      description: ''
+    },
+    {
+      id: 14,
+      url: '#',
+      name: 'SSH',
+      description: ''
+    },
+    {
+      id: 15,
+      url: '#',
+      name: 'and Mac OS X.',
+      description: ''
+    },
+  ]);
+
   const validateForm = () => {
     if (!fullName || !email || !mobile || !password) {
       Alert.alert('Validation Error', 'All fields are required.');
@@ -62,18 +161,25 @@ export const IntroductionView = ({ navigation }: any) => {
     return true;
   };
 
+  const renderItem = ({ item }: any) => (
+    <SafeAreaView style={styles.gridItem}>
+      {/* <Image source={{ uri: item.image }} style={styles.gridImage} /> */}
+      {/* <Text style={styles.descriptionText}>{item.description}</Text> */}
+      <SafeAreaView style={styles.priceRow}>
+        {/* <Text style={styles.priceText}>{defaultCurrency} {item.price}</Text> */}
+        <Text style={styles.priceText}>{item.name}</Text>
+        {/* <TouchableOpacity style={styles.cartButton} onPress={() => handleAddToCart(item)}>
+          <Ionicons name="cart-outline" size={18} color="olive" />
+        </TouchableOpacity> */}
+        {/* <Ionicons name="cart-outline" size={18} color="olive" /> */}
+      </SafeAreaView>
+    </SafeAreaView>
+  );
+
   BackHandler.addEventListener('hardwareBackPress', handleBack);
   
   return (
-    // <ScrollView contentContainerStyle={[styles.container, isTablet && styles.containerTablet]}>
-    <LinearGradient
-      id="career-timeline-view-gradient"
-      colors={renderCustomBackground ? ['#56b4d3', '#348f50', '#192f6a'] : ['inherit', 'transparent']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ flex: 1 }}
-    >
-      <ScrollView style={{ paddingTop: 100 }} contentContainerStyle={[styles.container && styles.containerTablet]}>
+    <ScrollView style={{ paddingTop: 150 }}>
           {/* <SafeAreaView  style={styles.topRow}>
               <TouchableOpacity style={styles.topButton} onPress={() => navigation.navigate('Explore')}>
                 <Ionicons name="chevron-back" size={24} color="#556B2F" />
@@ -83,7 +189,8 @@ export const IntroductionView = ({ navigation }: any) => {
           {/* <Text style={styles.cartText}>Cart</Text> */}
           {/* <SafeAreaView  style={styles.greenBar} /> */}
 
-          <View id="app-intro">
+          {/* <SafeAreaView id="app-intro"> */}
+          <SafeAreaView>
               <HeaderTitle style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Biography</HeaderTitle>
 
               <Text style={{ width: '80%', margin: 'auto', color: '#fff' }}>
@@ -92,149 +199,30 @@ export const IntroductionView = ({ navigation }: any) => {
                   I'm proficient in JavaScript/Typescript (Front-end using Angular, React, Vue and Back-end using Express, Axios and Nest - along with TypeORM), Java (SpringBoot & Hibernate), C#.NET, PL/SQL and  Bash. I'd describe myself as a curious individual who likes to experiment with a wide range of technologies such as Python, C (mainly for electronics programming - currently Arduino Uno & Mega and the Nordic nRF52) and occasionally some C++ usually only for experimenting with Unreal Engine.
               </Text>
               
-              <br />
+              {/* <br /> */}
               
               <Text style={{ width: '80%', margin: 'auto', color: '#fff', textAlign: 'center', paddingBottom: verticalScale(10) }}>My current day-to-day stack is:</Text>
 
               <View style={{ width: '25%', margin: 'auto' }}>
-                  <ul style={{ listStyle: 'none' }}>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.oracle.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Java SE
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.spring.io/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Spring Boot API
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.typescriptlang.org/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer">
-                              TypeScript
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.reactjs.org/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              ReactJS
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.electronjs.org/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              ElectronJS
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.getbootstrap.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Bootstrap
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.expressjs.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              ExpressJS
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="http://www.jade-lang.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Jade Template Engine
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="http://www.keystonejs.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              KeystoneJS
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.nginx.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Nginx
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.docker.org/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Docker
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.heroku.com/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Heroku
-                          </a>
-                      </li>
-                      <li>
-                          <a
-                              style={{ textDecoration: 'underline', color: '#fff' }}
-                              href="https://www.letsencrypt.org/"
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                          >
-                              Let's Encrypt
-                          </a>
-                      </li>
-                      <li>Bash</li>
-                      <li>SSH</li>
-                      <li>and Mac OS X.</li>
-                  </ul>
+                <FlatList
+                  data={items}
+                  renderItem={renderItem}
+                  keyExtractor={(item) => item.id}
+                  numColumns={1}
+                  contentContainerStyle={styles.gridContainer}
+                  scrollEnabled={false}
+                />
+                {/*
+                  <a
+                      style={{ textDecoration: 'underline', color: '#fff' }}
+                      href="https://www.oracle.com/"
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                  > 
+                */}
               </View>
-          </View>
+          </SafeAreaView>
       </ScrollView>
-    </LinearGradient>
   );
 };
 
@@ -498,6 +486,156 @@ const styles = StyleSheet.create({
     fontWeight: 'regular',
     textAlign: 'center',
   },
+
+  // topRow: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  //   marginBottom: 10,
+  //   paddingHorizontal: 10,
+  //   marginTop: 10,
+  // },
+  
+  // topButton: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   gap: 5,
+  // },
+  
+  // topButtonText: {
+  //   fontSize: 14,
+  //   color: '#556B2F',
+  // },
+
+  productListingHeadingText: {
+    fontSize: 40,
+    color: '#556B2F',
+    fontWeight: '600',
+    marginTop: 10,
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+
+  // greenBar: {
+  //   height: 20,
+  //   backgroundColor: '#556B2F',
+  //   marginTop: 25,
+  //   width: '90%',
+  //   borderRadius: 2,
+  //   marginLeft: 'auto',
+  //   marginRight: 'auto',
+  // },
+
+  exploreText: {
+    fontSize: 14,
+    color: '#556B2F',
+  },
+
+  backText: {
+    position: 'absolute',
+    left: 30,
+    top: -22,
+    fontSize: 14,
+    color: '#556B2F',
+  },
+
+  heading: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#333',
+    paddingHorizontal: 10,
+    marginTop: 10,
+    marginBottom: 5,
+  },
+
+  menuRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 10,
+    marginBottom: 5,
+    marginTop: 25,
+  },
+
+  menuItem: {
+    backgroundColor: '#eee',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+  },
+
+  menuItemSelected: {
+    backgroundColor: 'olive',
+  },
+
+  menuText: {
+    fontSize: 14,
+    color: '#333',
+  },
+
+  menuTextSelected: {
+    color: '#fff',
+  },
+
+  subText: {
+    fontSize: 12,
+    color: 'gray',
+    paddingHorizontal: 10,
+    marginBottom: 8,
+    marginTop: 20,
+  },
+
+  gridContainer: {
+    padding: 10,
+  },
+
+  gridItem: {
+    flex: 1,
+    margin: 5,
+    // backgroundColor: '#fff',
+    // borderRadius: 10,
+    padding: 10,
+    elevation: 3,
+  },
+
+  gridImage: {
+    width: '100%',
+    height: 120,
+    borderRadius: 10,
+    marginBottom: 8,
+  },
+
+  descriptionText: {
+    color: 'grey',
+    fontSize: 14,
+    marginBottom: 6,
+  },
+
+  priceRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  // priceText: {
+  //   fontSize: 16,
+  //   fontWeight: 'bold',
+  //   color: '#333',
+  // },
+
+  // cartButton: {
+  //   borderColor: 'olive',
+  //   borderStyle: 'solid',
+  //   borderCurve: 'circular',
+  //   borderTopWidth: 2,
+  //   borderLeftWidth: 2,
+  //   borderRightWidth: 2,
+  //   borderBottomWidth: 2,
+  //   borderRadius: 20,
+  //   padding: 8,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
 });
 
 export default IntroductionView;

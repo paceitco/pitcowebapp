@@ -1,39 +1,54 @@
+import { HeaderTitle } from '@react-navigation/elements';
 import React from 'react';
+import { Animated, Image, View, SafeAreaView, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 
 export const ProjectsView = ({ navigation }: any) => {
     return (
-        <div style={{
-            width: '90%',
-            color: '#fff',
+        <SafeAreaView style={{
+            width: 90,
+            //color: '#fff',
             backgroundColor: 'rgba(255,255,255,.6)',
-            margin: '40px auto 0px auto',
-            padding: '30px',
-            borderRadius: '10px',
-            border: '1px solid #fff'
-        }}
-        >
-            <h2 style={{ textAlign: 'center', paddingBottom: '30px', fontWeight: 'bold' }}>Project History</h2>
-            <div className='row'>
-                <div className='col-lg-6'>
-                    <a href="http://www.pioneerdesigns.co.za/">Pioneer Designs</a>
-                </div>
-                <div className='col-lg-6'>
-                    <a href="https://patrishnails.herokuapp.com/">Patrish Nails</a>
-                </div>
-                <div className='col-lg-6'>
-                    <a href="http://airotek.herokuapp.com/">Airotek Engineering</a>
-                </div>
-                <div className='col-lg-6'>
-                    <a href="http://casper.ndlovu.website/">Casper's Resume</a>
-                </div>
-                <div className='col-lg-6'>
-                    <a href="http://icebreak.azurewebsites.net/">My group's 3rd year webapp's server and parts of the Android app.</a>
-                </div>
-                <div className='col-lg-6'>
-                    <p style={{ color: '#000' }}>Also checkout some of my other projects on <a href="https://github.com/Cazs" target='_blank' rel="nofollow noopener noreferrer">GitHub</a></p>
-                </div>
-            </div>
-        </div>
+            // marginTop: -40,
+            marginRight: 'auto',
+            marginBottom: 0,
+            marginLeft: 'auto',
+            padding: 30,
+            borderRadius: 10,
+            borderWidth: 1,
+            borderStyle: 'solid',
+            borderColor: '#fff'
+        }}>
+            <HeaderTitle style={{ textAlign: 'center', paddingBottom: 30, fontWeight: 'bold' }}>Project History</HeaderTitle>
+            <View className='row'>
+                <View className='col-lg-6'>
+                    {/* <a href="http://www.pioneerdesigns.co.za/">Pioneer Designs</a> */}
+                    <Text>Pioneer Designs</Text>
+                </View>
+                <View className='col-lg-6'>
+                    {/* <a href="https://patrishnails.herokuapp.com/">Patrish Nails</a> */}
+                    <Text>Patrish Nails</Text>
+                </View>
+                <View className='col-lg-6'>
+                    {/* <a href="http://airotek.herokuapp.com/">Airotek Engineering</a> */}
+                    <Text>Airotek Engineering</Text>
+                </View>
+                <View className='col-lg-6'>
+                    {/* <a href="http://casper.ndlovu.website/">Casper's Resume</a> */}
+                    <Text>Casper's Resume</Text>
+                </View>
+                <View className='col-lg-6'>
+                    {/* <a href="http://icebreak.azurewebsites.net/">My group's 3rd year webapp's server and parts of the Android app.</a> */}
+                    <Text>My group's 3rd year webapp's server and parts of the Android app.</Text>
+                </View>
+                <View className='col-lg-6'>
+                    {/* <p style={{ color: '#000' }}>Also checkout some of my other projects on <a href="https://github.com/Cazs" target='_blank' rel="nofollow noopener noreferrer">GitHub</a></p> */}
+                    <Text>
+                        You can checkout some of my other projects on GitHub
+                        {/* <a href="https://github.com/Cazs" target='_blank' rel="nofollow noopener noreferrer">GitHub</a></p> */}
+                    </Text>
+                </View>
+            </View>
+        </SafeAreaView>
     );
 }
 

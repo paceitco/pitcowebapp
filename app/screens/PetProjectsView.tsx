@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   Modal,
+  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -16,6 +17,8 @@ import {
 } from 'react-native';
 import CartService from '../services/CartService';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { scale, verticalScale } from 'react-native-size-matters';
+import { HeaderTitle } from '@react-navigation/elements';
 // import MapScreen from './MapScreen';
 
 const defaultCurrency = 'R';
@@ -129,9 +132,7 @@ export const PetProjectsView = ({ navigation, style }: any) => {
   return (
     <SafeAreaProvider>
       <SafeAreaView  style={[{ paddingTop: 50 }, style]}>
-        {/* <Text style={styles.subText}>Based on your selection</Text> */}
-        {/* <Text style={styles.heading}>Pet Projects and Proof of Concepts</Text> */}
-        <h2 style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Pet Projects and Proof of Concepts</h2>
+        <HeaderTitle style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Pet Projects and Proof of Concepts</HeaderTitle>
 
         <SafeAreaView style={styles.centeredView}>
           <Modal
@@ -144,19 +145,22 @@ export const PetProjectsView = ({ navigation, style }: any) => {
             }}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                {/* <Text style={styles.modalText}>Hello World!</Text> */}
                 {renderModalItem()}
               </View>
             </View>
           </Modal>
-          {/* <Pressable
-            style={[styles.button, styles.buttonOpen]}
-            onPress={() => setModalVisible(true)}>
-            <Text style={styles.textStyle}>Show Modal</Text>
-          </Pressable> */}
         </SafeAreaView>
 
-        {loading ? (
+        <FlatList
+            data={items}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            numColumns={ Platform.OS === 'web' ? 3 : 1 }
+            contentContainerStyle={styles.gridContainer}
+            scrollEnabled={false}
+          />
+
+        {/* {loading ? (
           <ActivityIndicator size="large" color="olive" style={{ marginTop: 20 }} />
         ) : (
           <FlatList
@@ -167,7 +171,7 @@ export const PetProjectsView = ({ navigation, style }: any) => {
             contentContainerStyle={styles.gridContainer}
             scrollEnabled={false}
           />
-        )}
+        )} */}
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -199,11 +203,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'lightgrey',
     borderRadius: 20,
-    padding: 35,
+    padding: scale(10),
     alignItems: 'center',
     // shadowColor: '#000',
     // shadowOffset: {
@@ -214,22 +219,27 @@ const styles = StyleSheet.create({
     // shadowRadius: 4,
     elevation: 5,
   },
+
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
+
   buttonOpen: {
     backgroundColor: 'lightgrey', // '#F194FF',
   },
+
   buttonClose: {
     backgroundColor: '#2196F3',
   },
+
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
   },
+
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
@@ -314,29 +324,33 @@ const styles = StyleSheet.create({
   },
 
   gridContainer: {
-    padding: 10,
+    padding: 20,
   },
 
   gridItem: {
     flex: 1,
     margin: 5,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     borderRadius: 10,
-    padding: 10,
+    padding: 5,
     elevation: 3,
   },
 
   gridImage: {
-    width: '100%',
-    height: 120,
+    width: scale(280),
+    height: scale(140),
     borderRadius: 10,
     marginBottom: 8,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    // padding: 20,
   },
 
   descriptionText: {
     color: 'grey',
     fontSize: 14,
     marginBottom: 6,
+    width: '80%'
   },
 
   projectDescriptionRow: {
@@ -349,6 +363,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
+    // width: '10%'
   },
 
   cartButton: {
@@ -363,6 +378,8 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    right: scale(15),
+    top: verticalScale(1)
   },
 });
 

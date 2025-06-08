@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Image, View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 
-const MENU_Y_DEFAULT = -220;
-const MENU_ANIMATE_TO_Y = 10;
+const MENU_Y_DEFAULT = -310; // -220;
+const MENU_ANIMATE_TO_Y = verticalScale(-80) // 10;
 
 export const NavView = ({ navigation, style }: any) => {
   const slideAnim = useRef(new Animated.Value(MENU_Y_DEFAULT)).current;
@@ -25,13 +25,24 @@ export const NavView = ({ navigation, style }: any) => {
         {
           transform: [{ translateY: slideAnim }],
         },
+        {
+          top: verticalScale(113)
+        },
+        style,
+        // {
+        //   height: slideAnim
+        // },
+        // {
+        //   backgroundColor: 'red'
+        // }
       ]}
     >
       <LinearGradient
         colors={['#56b4d3', '#348f50']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={{ flex: 1 }}
+        // style={{ flex: 1 }}
+        // style={{ top: verticalScale(200) }}
       >
         {/* <View style={styles.row}>
           <TouchableOpacity style={styles.hiddenButton}>
@@ -62,10 +73,12 @@ export const NavView = ({ navigation, style }: any) => {
 
 const styles = StyleSheet.create({
   header: {
-    position: 'fixed',
-    top: 0,
-    width: '100%',
-    height: scale(110), // TODO: responsiveness
+    position: 'absolute',
+    // top: 0,
+    width: '99%',
+    // height: scale(110), // TODO: responsiveness
+    // height: verticalScale(120), // TODO: responsiveness
+    height: verticalScale(35), // TODO: responsiveness
     // backgroundColor: '#fff',
     // boxShadow: '#000',
     // shadowOffset: { width: 0, height: 15 },
@@ -75,6 +88,7 @@ const styles = StyleSheet.create({
     zIndex: 100,
     paddingHorizontal: 10,
     // paddingTop: 20,
+    //top: verticalScale(40),
     // top: '0px',
     // width: '100%',
     // position: 'absolute',
@@ -104,9 +118,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    // height: '100%'
     // marginTop: verticalScale(97),
     // top: verticalScale(97),
-    top: verticalScale(80),
+    // top: verticalScale(80),
   },
   navButton: {
     backgroundColor: '#007bff',

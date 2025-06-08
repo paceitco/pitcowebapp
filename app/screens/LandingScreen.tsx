@@ -32,6 +32,10 @@ import ProjectsView from './ProjectsView';
 import PetProjectsView from './PetProjectsView';
 import FooterView from './FooterView';
 import NavView from './NavView';
+import Work from './Work';
+import TimelineView from './TimelineViewComponent';
+import MapView, { Marker, Provider } from 'react-native-maps';
+// import PriceMarker from './common/PriceMarker';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -115,7 +119,22 @@ const renderStarRating = (rating = 4.5) => {
 export const LandingScreen = ({ navigation, style }: any) => {
   // const navigation = useNavigation<any>();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [searchText, setSearchText] = useState('');
+  const [
+    searchText,
+    setSearchText,
+    region = {
+      latitude: LATITUDE,
+      longitude: LONGITUDE,
+      latitudeDelta: LATITUDE_DELTA,
+      longitudeDelta: LONGITUDE_DELTA,
+    },
+    coordinate = {
+      latitude: LATITUDE,
+      longitude: LONGITUDE,
+    },
+    amount = 99,
+    provider = 'google'
+  ] = useState('');
 
   // const intervalId = useRef<NodeJS.Timeout | null>(null);
   // let intervalId: number = 0;
@@ -188,21 +207,20 @@ export const LandingScreen = ({ navigation, style }: any) => {
   );
 
   const renderCategoryCards = () => (
-    <FlatList
-    horizontal
-    data={CATEGORY_CARDS}
-    keyExtractor={(item, index) => index.toString()}
-    showsHorizontalScrollIndicator={false}
-    contentContainerStyle={styles.categoryList}
-    style={styles.categoryListContainer}
-    renderItem={({ item }) => (
-      <SafeAreaView style={styles.categoryCard}>
-          <Image source={{ uri: item.icon }} style={styles.categoryIcon} />
-          <Text style={styles.categoryText}>{item.name}</Text>
-        </SafeAreaView>
-      )}
-      />
-    );
+      <FlatList
+        horizontal
+        data={CATEGORY_CARDS}
+        keyExtractor={(item, index) => index.toString()}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.categoryList}
+        style={styles.categoryListContainer}
+        renderItem={({ item }) => (
+          <SafeAreaView style={styles.categoryCard}>
+              <Image source={{ uri: item.icon }} style={styles.categoryIcon} />
+              <Text style={styles.categoryText}>{item.name}</Text>
+            </SafeAreaView>
+          )} />
+  );
 
   const renderMobileTopNav = () => (
     <SafeAreaView  style={styles.topRow}>
@@ -234,6 +252,117 @@ export const LandingScreen = ({ navigation, style }: any) => {
       </SafeAreaView>
   );
 
+  const items = [
+    {
+      id: 0,
+      year: '2009',
+      title: 'Rand Park High School (2009 - 2013)',
+      subtitle: 'National Senior Certificate',
+      description: 'This is where Casper would fall in love with the art of programming.',
+      position: 'left',
+      styles: {
+        // marginLeft: 0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        // left: scale(5)
+        left: '-27.7%'
+      }
+    },
+    {
+      id: 1,
+      year: '2014',
+      title: 'Univ. of Johannesburg (2014 - 2018)',
+      subtitle: 'BSc Information Technology',
+      description:
+        'Majoring in Computer Science & Informatics and minoring in Mathematics (Calculus 1 & Discrete 1), Business Management 1 and Information Management 1.',
+      position: 'right',
+      styles: {
+        // marginRight: 0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        // right: scale(-168)
+        left: '25.4%'
+        // backgroundColor: 'red'
+      }
+    },
+  ]
+  
+  const workHistoryItems = [
+    {
+      id: 0,
+      year: '2015',
+      title: 'Patrish Mobile Nails (2015/03/01 ­- 2016/04/31)',
+      subtitle: '',
+      description: 'My role at PMN was to help uplift the company’s online presence by developing and maintaining a modern, responsive and SEO compliant web application. For this project I initially used pHp with MySQL, and eventually rewrote the project in NodeJS.',
+      position: 'left',
+      styles: {
+        // marginLeft: 0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        // left: scale(5)
+        left: '-27.7%'
+      }
+    },
+    {
+      id: 1,
+      year: '2016',
+      title: 'Omega Fire & Security (2016/05/01 - 2018/03/31)',
+      subtitle: '',
+      description:
+        'My primary role at Omega was to develop an internal tool to help the company better manage various aspects of its business operations such as, human resource management, project management, quoting, invoicing, task management, time &amp; attendance as well as a policy/regulatory document ­management system - essentially a miniature ERP system.',
+      position: 'right',
+      styles: {
+        // marginRight: 0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        // right: scale(-168)
+        left: '25.4%'
+        // backgroundColor: 'red'
+      }
+    },
+    {
+      id: 2,
+      year: '2018',
+      title: 'Investec Bank (2018/04/01 - 2023/12/31)',
+      subtitle: '',
+      description: 'My primary role at Investec is to write and maintain the code/applications that are used by different communities within the business (Private Bankers, Property Bankers, Credit Officers, Legal Risk Officers, the Operations Support team and sometimes the development/engineering team) while also adhering to the code quality standards (TDD, SOLID, DRY, documentation, naming conventions, maintaining our applications and making sure that they\'re up-to-date and don\'t have any security vulnerabilities etc.) set by the team and industry. My secondary role is to mentor/guide new joiners & team members, innovating and keeping up with the ever-changing world of software development (learning new technologies etc.) and assist the Operations Support team with resolving production issues.',
+      position: 'left',
+      styles: {
+        // marginLeft: 0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        // left: scale(5)
+        left: '-27.7%'
+      }
+    },
+    {
+      id: 3,
+      year: '2024',
+      title: 'Sanlam (2024/01/01 - 2024/12/31)',
+      subtitle: '',
+      description: `
+        My primary role at Sanlam is to write and maintain the code/applications that are used by 
+        different communities within the business while also adhering to the code quality standards 
+        (TDD, SOLID, DRY, ETL, documentation, naming conventions, maintaining our applications and 
+        making sure that they're up-to-date and don't have any security vulnerabilities etc.) set by 
+        the team and industry.
+        My day-to-day activities involve building and maintaining internal applications & APIs to 
+        facilitate the client onboading, retention and assistance processes - which includes various 
+        client-facing and internal applications for individuals & corporations, regulatory/compliance 
+        systems, decomissioning/upgrading legacy systems and/or components/frameworks (e.g VB.NET to C#, 
+        Angular upgrades, on-premises to cloud upgrades etc.), and to support of aforementioned systems.
+      `,
+      position: 'right',
+      styles: {
+        // marginLeft: 0,
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        // left: scale(5)
+        left: '25.4%'
+      }
+    },
+  ]
+
   return (
     <LinearGradient
         colors={['#56b4d3', '#348f50', '#192f6a']}
@@ -245,28 +374,41 @@ export const LandingScreen = ({ navigation, style }: any) => {
         {/* <NavView key="nav-component" /> */}
         
         {
-          (Platform.OS !== 'web') ? renderMobileTopNav() : ''
+          (Platform.OS !== 'web') ? renderMobileTopNav() : <View />
         }
         
         {
-          (Platform.OS !== 'web') ? renderMobileSearch() : ''
+          (Platform.OS !== 'web') ? renderMobileSearch() : <View />
         }
 
-        {renderImageSlide()}
+        { renderImageSlide() }
 
         {
-          (Platform.OS !== 'web') ? renderCategoryCards() : ''
+          (Platform.OS !== 'web') ? renderCategoryCards() : <View />
         }
 
-        {/* {renderCategoryCards()} */}
         {/* <ProductListingScreen style={{ marginTop: verticalScale(20), marginBottom: verticalScale(30) }} /> */}
         {/* <Nav key="nav-component" />
         <Slideshow key="slideshow-component" images={images} /> */}
         <IntroductionView key="introduction-component" style={{ marginTop: verticalScale(70) }} />
+
+        {/* <View style={{ paddingTop: verticalScale(630) }}>
+          <MapView
+            provider={provider}
+            style={styles.map}
+            initialRegion={region}
+          >
+            <Marker coordinate={coordinate}>
+              {/* <PriceMarker amount={amount} /> *
+            </Marker>
+          </MapView>
+        </View> */}
+
         <SkillsView key="skills-component" />
-        <CareerTimelineView key="career-timeline-component" />
+        <TimelineView key="education-timeline-component" items={items} showHeaderText={true} headerText='Career Timeline' headerStyles={{ color: '#fff', textAlign: 'center', paddingBottom: 30, fontWeight: 'bold' }}/>
+        <TimelineView key="work-timeline-component" items={workHistoryItems} showPresentMarker={true} presentMarkerText="Now" />
         <StackView key="stack-component" />
-        <ProjectsView key="projects-component" />
+        {/* <ProjectsView key="projects-component" /> */}
         <PetProjectsView key="pet-projects-component" />
         <FooterView key="footer-component" />
       </ScrollView>

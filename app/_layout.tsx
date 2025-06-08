@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import {
+  Platform,
   StyleSheet
 } from 'react-native';
 import { CartProvider } from './providers/CartContext';
@@ -25,7 +26,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Landing = () => (
-    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle:{ backgroundColor: 'rgba(98, 138, 20, 0.8)', height: verticalScale(20) } }}>
+    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle:{ backgroundColor: 'rgba(98, 138, 20, 0.8)', height: verticalScale(Platform.OS === 'web' ? 20 : 50) } }}>
       <Tab.Screen
         name="Home"
         component={LandingScreen} 
@@ -35,12 +36,14 @@ const Landing = () => (
             color: "#fff"
           },
           tabBarIconStyle: {
-            color: "#fff"
+            color: "#fff",
+            height: '100%',
+            width: '100%'
           },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="storefront-outline" color={focused ? color : '#fff'} size={size} />
           ),
-          tabBarActiveBackgroundColor: '#343434',
+          // tabBarActiveBackgroundColor: '#343434',
         }}/>
       
       {/* <Tab.Screen
@@ -68,10 +71,15 @@ const Landing = () => (
           tabBarLabelStyle: {
             color: "#fff"
           },
+          tabBarIconStyle: {
+            color: "#fff",
+            height: '100%',
+            width: '100%'
+          },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="code-outline" color={focused ? color : '#fff'} size={size} />
           ),
-          tabBarActiveBackgroundColor: '#343434',
+          // tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
@@ -83,10 +91,15 @@ const Landing = () => (
           tabBarLabelStyle: {
             color: "#fff"
           },
+          tabBarIconStyle: {
+            color: "#fff",
+            height: '100%',
+            width: '100%'
+          },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="time-outline" color={focused ? color : '#fff'} size={size} />
           ),
-          tabBarActiveBackgroundColor: '#343434',
+          // tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
@@ -98,10 +111,15 @@ const Landing = () => (
           tabBarLabelStyle: {
             color: "#fff"
           },
+          tabBarIconStyle: {
+            color: "#fff",
+            height: '100%',
+            width: '100%'
+          },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="person-outline" color={focused ? color : '#fff'} size={size} />
           ),
-          tabBarActiveBackgroundColor: '#343434',
+          // tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
@@ -112,10 +130,15 @@ const Landing = () => (
           tabBarLabelStyle: {
             color: "#fff"
           },
+          tabBarIconStyle: {
+            color: "#fff",
+            height: '100%',
+            width: '100%'
+          },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="heart-outline" color={focused ? color : '#fff'} size={size} />
           ),
-          tabBarActiveBackgroundColor: '#343434',
+          // tabBarActiveBackgroundColor: '#343434',
         }}/>
 
       <Tab.Screen
@@ -126,10 +149,15 @@ const Landing = () => (
           tabBarLabelStyle: {
             color: "#fff"
           },
+          tabBarIconStyle: {
+            color: "#fff",
+            height: '100%',
+            width: '100%'
+          },
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="mail-outline" color={focused ? color : '#fff'} size={size} />
           ),
-          tabBarActiveBackgroundColor: '#343434',
+          // tabBarActiveBackgroundColor: '#343434',
         }}/>
 
     </Tab.Navigator>
@@ -144,9 +172,9 @@ export function App() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         {/* <Stack.Screen name="Landing" component={LandingScreen} /> */}
         <Stack.Screen name="Landing" component={Landing} />
-        <Stack.Screen name="Home" component={Landing} />
-        <Stack.Screen name="/" component={Landing} />
-        <Stack.Screen name="*" component={Landing} />
+        {/* <Stack.Screen name="Home" component={Landing} /> */}
+        {/* <Stack.Screen name="/" component={Landing} />
+        <Stack.Screen name="*" component={Landing} /> */}
         {/* <Stack.Screen name="" component={Landing} /> */}
       </Stack.Navigator>
     </CartProvider>

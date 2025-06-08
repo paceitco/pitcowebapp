@@ -1,6 +1,6 @@
 import { HeaderTitle } from '@react-navigation/elements';
 import React from 'react'
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
 
 const programming_skills = [
     {
@@ -148,93 +148,203 @@ const soft_skills = [
 
 export const SkillsView = ({ navigation }: any) => {
     return (
-        <View id="skills-containers">
-            <HeaderTitle style={{ textAlign: 'center', color: '#fff', fontWeight: 'bold' }}>Skills Matrix</HeaderTitle>
+        <View id="skills-container" style={{ padding: 10 }}>
+            <HeaderTitle style={{ textAlign: 'center', color: '#000', fontWeight: 'bold' }}>Skills Matrix</HeaderTitle>
             <SafeAreaView
                 id="skill-bars-container"
                 className="row"
                 style={{ width: '98%', margin: 'auto' }}>
 
-                <SafeAreaView id="programming-skills" className="col-lg-6">
-                    <div className='skill-bar-container'>
-                        <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Programming Skills</h3>
-                        <div style={{ display: 'block' }}>
+                {/* <SafeAreaView id="programming-skillss" className="col-lg-6" style={{ top: 20, borderBottomColor: '#343434', borderWidth: 5 }}> */}
+                <SafeAreaView id="programming-skills" className="col-lg-6" style={[ styles.card, { marginBottom: 50, padding: 20 } ]}>
+                    <View className='skill-bar-container'>
+                        {/* <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Programming Skills</h3> */}
+                        <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>Programming Skills</Text>
+                        {/* <View style={{ display: 'block' }}> */}
+                        <View>
                             {
                                 programming_skills.map((skill, index) => (
-                                    <div key={skill.id} className='row'>
-                                        <div className='col-lg-4'>
-                                            <p style={{ margin: '0px 10px 0px 0px', textAlign: 'left', float: 'left' }}>{skill.title}</p>
-                                        </div>
-                                        <div className='col-lg-4'>
-                                            <div id={`skill-bar-${index}`} className='skill-bar'>
-                                                <div id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: '5px', backgroundColor: '#ff7400', borderRadius: '5px' }} />
-                                                <div style={{ width: '20px', height: '20px', backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} />
-                                            </div>
-                                        </div>
-                                        <div className='col-lg-4'>
-                                            <p className='skill-level' style={{ textAlign: 'right', float: 'right' }}>{skill.level}%</p>
-                                        </div>
-                                    </div>
+                                    <View key={skill.id} className='row'>
+                                        <View className='col-lg-4'>
+                                            <Text style={{
+                                                marginTop: 0,
+                                                marginRight: 10,
+                                                marginBottom: 0,
+                                                marginLeft: 0,
+                                                textAlign: 'left',
+                                                // float: 'left'
+                                                }}>
+                                                    {skill.title}
+                                            </Text>
+                                        </View>
+                                        <View className='col-lg-4'>
+                                            <View id={`skill-bar-${index}`} className='skill-bar'>
+                                                <View id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: 5, backgroundColor: '#ff7400', borderRadius: '5px' }} />
+                                                {/* <View style={{ width: 20, height: 20, backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} /> */}
+                                                <View style={{
+                                                    width: 20,
+                                                    height: 20,
+                                                    backgroundColor: '#ff7400',
+                                                    borderRadius: '20px',
+                                                    marginTop: -13,
+                                                    marginRight: 0,
+                                                    marginBottom: 0,
+                                                    marginLeft: `${skill.level - 1}%`
+                                                    }} />
+                                            </View>
+                                        </View>
+                                        <View className='col-lg-4'>
+                                            <Text
+                                                className='skill-level'
+                                                style={{
+                                                textAlign: 'right',
+                                                // float: 'right'
+                                                }}>
+                                                    {skill.level}%
+                                            </Text>
+                                        </View>
+                                    </View>
                                 ))
                             }
-                        </div>
-                    </div>
+                        </View>
+                    </View>
                 </SafeAreaView>
 
-                <SafeAreaView id="devops-skills" className="col-lg-6">
-                    <div className='skill-bar-container'>
-                        <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>DevOps Skills</h3>
-                        <div style={{ display: 'block' }}>
+                <SafeAreaView id="devops-skills" className="col-lg-6" style={[ styles.card, { marginBottom: 50, padding: 20 } ]}>
+                    <View className='skill-bar-container'>
+                        <HeaderTitle style={{ textAlign: 'center', fontWeight: 'bold' }}>DevOps Skills</HeaderTitle>
+                        {/* <View style={{display: 'block' }}> */}
+                        <View>
                             {
                                 devops_skills.map((skill, index) => (
-                                    <div key={skill.id} className='row'>
-                                        <div className='col-lg-4'>
-                                            <p style={{ margin: '0px 10px 0px 0px', textAlign: 'left', float: 'left' }}>{skill.title}</p>
-                                        </div>
-                                        <div className='col-lg-4'>
-                                            <div id={`skill-bar-${index}`} className='skill-bar'>
-                                                <div id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: '5px', backgroundColor: '#ff7400', borderRadius: '5px' }} />
-                                                <div style={{ width: '20px', height: '20px', backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} />
-                                            </div>
-                                        </div>
-                                        <div className='col-lg-4'>
-                                            <p className='skill-level' style={{ textAlign: 'right', float: 'right' }}>{skill.level}%</p>
-                                        </div>
-                                    </div>
+                                    <View key={skill.id} className='row'>
+                                        <View className='col-lg-4'>
+                                            <Text
+                                                style={{
+                                                    marginTop: 0,
+                                                    marginRight: 10,
+                                                    marginBottom: 0,
+                                                    marginLeft: 0,
+                                                    textAlign: 'left',
+                                                    // float: 'left'
+                                                }}>
+                                                    {skill.title}
+                                            </Text>
+                                        </View>
+                                        <View className='col-lg-4'>
+                                            <View id={`skill-bar-${index}`} className='skill-bar'>
+                                                <View id={`skill-level-${index}`}
+                                                    style={{
+                                                        width: `${skill.level}%`,
+                                                        height: 5,
+                                                        backgroundColor: '#ff7400',
+                                                        borderRadius: '5px'
+                                                    }} />
+                                                <View style={{
+                                                    width: 20,
+                                                    height: 20,
+                                                    backgroundColor: '#ff7400',
+                                                    borderRadius: '20px',
+                                                    marginTop: -13,
+                                                    marginRight: 0,
+                                                    marginBottom: 0,
+                                                    marginLeft: `${skill.level - 1}%`
+                                                }}/>
+                                            </View>
+                                        </View>
+                                        <View className='col-lg-4'>
+                                            <Text
+                                                className='skill-level'
+                                                style={{
+                                                    textAlign: 'right',
+                                                    // float: 'right'
+                                                }}>
+                                                    {skill.level}%
+                                            </Text>
+                                        </View>
+                                    </View>
                                 ))
                             }
-                        </div>
-                    </div>
+                        </View>
+                    </View>
                 </SafeAreaView>
                 
-                <SafeAreaView id="soft-skills" className="col-lg-6">
-                    <div className='skill-bar-container'>
-                        <h3 style={{ textAlign: 'center', fontWeight: 'bold' }}>Soft Skills</h3>
-                        <div style={{ display: 'block' }}>
+                <SafeAreaView id="soft-skills" className="col-lg-6" style={[ styles.card, { padding: 20 } ]}>
+                    <View className='skill-bar-container'>
+                        <HeaderTitle style={{ textAlign: 'center', fontWeight: 'bold' }}>Soft Skills</HeaderTitle>
+                        {/* <View style={{ display: 'block' }}> */}
+                        <View>
                             {
                                 soft_skills.map((skill, index) => (
-                                    <div key={skill.id} className='row'>
-                                        <div className='col-lg-4'>
-                                            <p style={{ margin: '0px 10px 0px 0px', textAlign: 'left', float: 'left' }}>{skill.title}</p>
-                                        </div>
-                                        <div className='col-lg-4'>
-                                            <div id={`skill-bar-${index}`} className='skill-bar'>
-                                                <div id={`skill-level-${index}`} style={{ width: `${skill.level}%`, height: '5px', backgroundColor: '#ff7400', borderRadius: '5px' }} />
-                                                <div style={{ width: '20px', height: '20px', backgroundColor: '#ff7400', borderRadius: '20px', margin: `-13px 0px 0px ${skill.level - 1}%` }} />
-                                            </div>
-                                        </div>
-                                        <div className='col-lg-4'>
-                                            <p className='skill-level' style={{ textAlign: 'right', float: 'right' }}>{skill.level}%</p>
-                                        </div>
-                                    </div>
+                                    <View key={skill.id} className='row'>
+                                        <View className='col-lg-4'>
+                                            <Text style={{
+                                                marginTop: 0,
+                                                marginRight: 10,
+                                                marginBottom: 0,
+                                                marginLeft: 0,
+                                                textAlign: 'left',
+                                                // float: 'left'
+                                            }}>
+                                                {skill.title}
+                                            </Text>
+                                        </View>
+
+                                        <View className='col-lg-4'>
+                                            <View id={`skill-bar-${index}`} className='skill-bar'>
+                                                <View
+                                                    id={`skill-level-${index}`}
+                                                    style={{
+                                                        width: `${skill.level}%`,
+                                                        height: 5,
+                                                        backgroundColor: '#ff7400',
+                                                        borderRadius: '5px'
+                                                    }} />
+                                                <View
+                                                    style={{
+                                                        width: 20,
+                                                        height: 20,
+                                                        backgroundColor: '#ff7400',
+                                                        borderRadius: '20px',
+                                                        marginTop: -13,
+                                                        marginRight: 0,
+                                                        marginBottom: 0,
+                                                        marginLeft: `${skill.level - 1}%`
+                                                    }} />
+                                            </View>
+                                        </View>
+
+                                        <View className='col-lg-4'>
+                                            <Text
+                                                className='skill-level'
+                                                style={{
+                                                    textAlign: 'right',
+                                                    // float: 'right'
+                                                }}>
+                                                    {skill.level}%
+                                            </Text>
+                                        </View>
+                                    </View>
                                 ))
                             }
-                        </div>
-                    </div>
+                        </View>
+                    </View>
                 </SafeAreaView>
             </SafeAreaView>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#f2f2f2',
+    padding: 15,
+    borderRadius: 10,
+    width: '77%', // scale(140),
+    elevation: 3,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+});
 
 export default SkillsView;

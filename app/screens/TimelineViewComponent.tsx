@@ -1,43 +1,21 @@
+import { HeaderTitle } from '@react-navigation/elements';
 import React, { useCallback, useState } from 'react';
 import { Animated, FlatList, Image, ScrollView, View, TouchableOpacity, Text, StyleSheet, Dimensions, Platform, SafeAreaView } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 import uuid from 'react-native-uuid';
 
-export const Work = () => {
-  const [items, setItems] = useState<any[]>([
-    {
-      id: 0,
-      year: '2009',
-      title: 'Rand Park High School (2009 - 2013)',
-      subtitle: 'National Senior Certificate',
-      description: 'This is where Casper would fall in love with the art of programming.',
-      position: 'left',
-      styles: {
-        // marginLeft: 0,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        // left: scale(5)
-        left: '-27.7%'
-      }
-    },
-    {
-      id: 1,
-      year: '2014',
-      title: 'Univ. of Johannesburg (2014 - 2018)',
-      subtitle: 'BSc Information Technology',
-      description:
-        'Majoring in Computer Science & Informatics and minoring in Mathematics (Calculus 1 & Discrete 1), Business Management 1 and Information Management 1.',
-      position: 'right',
-      styles: {
-        // marginRight: 0,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        // right: scale(-168)
-        left: '25.4%'
-        // backgroundColor: 'red'
-      }
-    },
-  ]);
+export type TimelineViewProps = {
+  items: any[];
+  showPresentMarker?: boolean;
+  presentMarkerText?: string;
+  headerText?: string;
+  showHeaderText?: boolean;
+  headerStyles?: object;
+};
+
+export const TimelineView = ( props: TimelineViewProps ) => {
+  // const [items, setItems] = useState<any[]>([
+  const [items, setItems] = useState<any[]>(props.items);
 
   const renderArrow = (position: string) => (
     <View
@@ -47,19 +25,19 @@ export const Work = () => {
     />
   );
 
-  const renderItem = ({ item }: any) => (
+  const renderItem = (item : any, index: number) => (
     <SafeAreaView
       key={"work-timeline-view-container-" + item?.id}
-      style={[styles.card, styles.gridItem, item.styles]}
     >
-      <View style={{ alignItems: item.position === 'left' ? 'flex-end' : 'flex-start', paddingTop: '4%' }}>
+      {/* <View style={{ alignItems: item.position === 'left' ? 'flex-end' : 'flex-start', paddingTop: '4%' }}> */}
+      <View style={[styles.card, styles.gridItem, item.styles, { alignItems: item.position === 'left' ? 'flex-end' : 'flex-start' }]}>
         <View style={{ position: 'relative' }}>
           {/* Year Circle */}
           <View
             style={[
               styles.circle,
               {
-                left: item.position === 'left' ? scale(34) : scale(-34),
+                left: item.position === 'left' ? scale(42) : scale(-44),
                 // left: item.position === 'left' ? '45%' : '-10%',
                 // justifyContent: item.position === 'left' ? 'flex-end' : 'flex-start',
               },
@@ -83,15 +61,59 @@ export const Work = () => {
           <Text style={styles.subtitle}>{item.subtitle}</Text>
           <Text style={styles.description}>{item.description}</Text>
         </View>
-        
       </View>
+
+      {/* Present Circle */}
+      {
+        index === items.length - 1 && props.showPresentMarker ? 
+        (
+          <View
+            style={[
+              styles.circle,
+              {
+                // position: 'absolute',
+                // width: 70,
+                // height: 70,
+                borderRadius: 40,
+                backgroundColor: '#ff7400',
+                left: item.position === 'left' ? scale(Platform.OS === 'web' ? -9 : -4) : scale(Platform.OS === 'web' ? -9 : -4), // TODO: fix messy logic
+                // left: item.position === 'left' ? scale(125) : scale(-44),
+                top: 50,
+                // bottom: 0,
+                // left: item.position === 'left' ? scale(105) : scale(-40),
+                // left: item.position === 'left' ? '46.6%' : '40.3%',
+                
+                // left: '46.6%',
+
+                // left: scale(-34),
+                // left: '47.7%',
+                // left: '47.7%',
+                // right: '47.7%',
+                // marginLeft: -1,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginBottom: Platform.OS === 'web'? verticalScale(-56.7) : verticalScale(13.5), // TODO: fix messy logic
+                zIndex: 10,
+              }]}>
+            <Text style={styles.circleText}>{ props.presentMarkerText }</Text>
+          </View>
+        ) : <View />
+      }
+      
     </SafeAreaView>
-  );   
+  );
+
+  const renderHeaderText = (text?: string, styles?: object) => (
+    <HeaderTitle style={[styles]}>{text}</HeaderTitle>
+  );
 
   return (
     <ScrollView
-      contentContainerStyle={[styles.container, { backgroundColor: 'transparent', paddingTop: 0 }]}
-    >
+      contentContainerStyle={[styles.container, { backgroundColor: 'transparent', paddingTop: 0 }]}>
+      {
+        props.showHeaderText ? renderHeaderText(props?.headerText, props?.headerStyles) : <View />
+      }
+      
       <View style={styles.timelineContainer}>
         {/* Vertical timeline line */}
         <View style={styles.verticalLine} />
@@ -99,7 +121,7 @@ export const Work = () => {
         {/* Timeline items */}
         <FlatList
           data={items}
-          renderItem={renderItem}
+          renderItem={({item, index}) => renderItem(item, index)}
           keyExtractor={(item: any) => item?.id.toString()}
           numColumns={1}
           contentContainerStyle={styles.gridContainer}
@@ -108,7 +130,6 @@ export const Work = () => {
       </View>
     </ScrollView>
   );
-  
 }
 
 const styles = StyleSheet.create({
@@ -165,14 +186,14 @@ const styles = StyleSheet.create({
     // margin: 5,
     backgroundColor: '#fff',
     borderRadius: 10,
-    // padding: 20,
+    padding: 20,
     elevation: 3,
   },
 
   arrowRight: {
     position: 'absolute',
     top: -7,
-    left: scale(-11),
+    left: scale(-21),
     width: 0,
     height: 0,
     borderTopWidth: 6,
@@ -186,7 +207,7 @@ const styles = StyleSheet.create({
   arrowLeft: {
     position: 'absolute',
     top: -7,
-    right: scale(-11.7),
+    right: scale(-19.7),
     width: 0,
     height: 0,
     borderTopWidth: 6,
@@ -210,6 +231,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff7400',
     top: 0,
     bottom: 0,
+    // bottom: 140,
     left: '49%',
     marginLeft: -1,
     zIndex: -1,
@@ -217,7 +239,7 @@ const styles = StyleSheet.create({
 
   centerColumn: {
     width: 5,
-    height: 300,
+    // height: 300,
     // marginTop: '70%',
     // marginTop: -40,
     // alignItems: 'center',
@@ -312,4 +334,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Work;
+export default TimelineView;
