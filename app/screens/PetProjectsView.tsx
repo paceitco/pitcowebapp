@@ -44,37 +44,37 @@ export const PetProjectsView = ({ navigation, style }: any) => {
       const formatted = [
         {
           id: 'ctf-thumbnail',
-          image: 'https://image.ibb.co/iHVTMT/ctf600x375_15fps.gif',
+          imageUrl: 'https://image.ibb.co/iHVTMT/ctf600x375_15fps.gif',
           description: 'Capture The Flag Game (3rd Year Computer Science Project)',
-          downloadUrl: '/assets/media/executables/capture-the-flag.zip',
+          downloadUrl: 'assets/media/executables/capture-the-flag.zip',
         },
         {
           id: 'platformer-level-editor-thumbnail',
-          image: 'https://i.ibb.co/D9m4t93/c700x438-30fps.gif',
+          imageUrl: 'https://i.ibb.co/D9m4t93/c700x438-30fps.gif',
           description: 'Platformer Game Level Editor (2nd Year Computer Science Project)',
-          downloadUrl: '/assets/media/executables/platformer-level-editor.zip',
+          downloadUrl: 'assets/media/executables/platformer-level-editor.zip',
         },
         {
           id: 'arduino-thumbnail',
-          image: '/assets/media/projects/rc-steering-poc.png',
+          imagePath: 'assets/media/projects/rc-steering-poc.png',
           description: 'Arduino Mega Stuff',
           downloadUrl: 'https://drive.google.com/file/d/1x2RGKhvKIErYOzhJkaq4uxwI_6WfTQFp/preview',
         },
         {
           id: 'rc-car-thumbnail',
-          image: 'https://i.ibb.co/D9m4t93/c700x438-30fps.gif',
+          imagePath: 'assets/media/projects/rc-steering-poc.png',
           description: 'RC Car Project',
           downloadUrl: 'https://drive.google.com/file/d/1uEUQSd3nP1A1ky5FIsFp18r6Y7qM5xS0/preview',
         },
         {
           id: 'rc-car-steering-thumbnail',
-          image: 'https://i.ibb.co/D9m4t93/c700x438-30fps.gif',
+          imagePath: 'assets/media/projects/rc-steering-poc.png',
           description: 'Makeshift Steering System for RC car',
           downloadUrl: 'https://drive.google.com/file/d/1LmSRjo13e7qKwGtfdDrCESt_LZ6EDkj7/preview',
         },
         {
           id: 'dashcam-thumbnail',
-          image: 'https://i.ibb.co/D9m4t93/c700x438-30fps.gif',
+          imageUrl: 'https://i.ibb.co/D9m4t93/c700x438-30fps.gif',
           description: 'Makeshift dashcam using a generic IP cam & 9v battery',
           downloadUrl: 'https://drive.google.com/file/d/1Xw3gJk5i_csiskaKGK4pw-G3UHdwl3UY/preview',
         },
@@ -99,7 +99,7 @@ export const PetProjectsView = ({ navigation, style }: any) => {
           setModalContent(item);
           setModalVisible(true);
           }}>
-          <Image source={{ uri: item.image }} style={styles.gridImage} />
+          <Image source={{ uri: item?.imageUrl || 'http://localhost:8081/' + item?.imagePath }} style={styles.gridImage} />
           <SafeAreaView style={styles.projectDescriptionRow}>
             <Text style={styles.descriptionText}>{item.description}</Text>
             {/* <TouchableOpacity style={styles.cartButton} onPress={() => handleAddToCart(item)}> */}
@@ -122,9 +122,9 @@ export const PetProjectsView = ({ navigation, style }: any) => {
             onPress={() => setModalVisible(!modalVisible)}>
             <Text style={styles.textStyle}>Close</Text>
           </Pressable>
-          <TouchableOpacity style={styles.cartButton} onPress={ () => window.open(modalContent?.downloadUrl) }>
+          {/* <TouchableOpacity style={styles.cartButton} onPress={ () => window.open(modalContent?.downloadUrl) }>
             <Ionicons name="save-outline" size={18} color="olive" />
-          </TouchableOpacity>    
+          </TouchableOpacity>     */}
         </SafeAreaView>
     </SafeAreaView>
   );
@@ -324,7 +324,7 @@ const styles = StyleSheet.create({
   },
 
   gridContainer: {
-    padding: 20,
+    padding: 0,
   },
 
   gridItem: {
@@ -337,7 +337,7 @@ const styles = StyleSheet.create({
   },
 
   gridImage: {
-    width: scale(280),
+    width: scale(Platform.OS === 'web' ? 200 : 280),
     height: scale(140),
     borderRadius: 10,
     marginBottom: 8,

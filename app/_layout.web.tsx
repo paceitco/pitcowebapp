@@ -21,6 +21,20 @@ import StackView from './screens/StackView';
 import NavView from './screens/NavView';
 import { verticalScale } from 'react-native-size-matters';
 import ExploreScreen from './screens/Explore';
+// import ExploreScreen from './screens/ExploreScreen';
+// import FullScreenMap from './FullScreenMap';
+
+// const ExploreScreen = React.lazy(() => import('./screens/ExploreScreen'));
+// const FullScreenMap = React.lazy(() => Platform.OS === 'web' ? import('./FullScreenMap.web') : import('./FullScreenMap.native'));
+// import ExploreScreenMobile from './screens/ExploreScreenMobile';
+// import ExploreScreen from Platform.OS === 'web' ? './screens/ExploreScreen' : './screens/ExploreScreen';
+
+// const FullScreenMap = React.lazy(() => import('./FullScreenMap.web'));
+// import FullScreenMap from './FullScreenMap.web';
+
+// import FullScreenMapWeb from './screens/FullScreenMapWeb';
+// import MapViewComponent from '@/components/MapViewComponent';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -44,6 +58,25 @@ const Landing = () => (
             <Ionicons name="storefront-outline" color={focused ? color : '#fff'} size={size} />
           ),
           // tabBarActiveBackgroundColor: '#343434',
+        }}/>
+      
+      <Tab.Screen
+        name="Explore"
+        // component={ExploreScreen} 
+        // component={FullScreenMapWeb} 
+        component={ExploreScreen} 
+        // component={MapViewComponent} 
+        options={{
+          tabBarLabel: 'Explore',
+          tabBarLabelStyle: {
+            color: "#fff"
+          },
+          tabBarIconStyle: {
+            color: "#fff"
+          },
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="compass-outline" color={focused ? color : '#fff'} size={size} />
+          ),
         }}/>
       
       <Tab.Screen
@@ -144,10 +177,9 @@ const Landing = () => (
           // tabBarActiveBackgroundColor: '#343434',
         }}/>
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Explore"
-        // component={FullScreenMap} 
-        component={ExploreScreen} 
+        component={FullScreenMap} 
         options={{
           tabBarLabel: 'Explore',
           tabBarLabelStyle: {
@@ -159,7 +191,7 @@ const Landing = () => (
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name="compass-outline" color={focused ? color : '#fff'} size={size} />
           ),
-        }}/>
+        }}/> */}
 
     </Tab.Navigator>
 );

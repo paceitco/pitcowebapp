@@ -167,7 +167,7 @@ const Landing = () => (
 export function App() {
   return (
     <CartProvider>
-      <NavView key="nav-component" />
+      <NavView key="nav-component" style={{ marginTop: verticalScale(105) }} />
       <Stack.Navigator screenOptions={{ headerShown: false, headerLargeTitleShadowVisible: true }} >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />

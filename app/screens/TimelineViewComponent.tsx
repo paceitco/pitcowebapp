@@ -223,6 +223,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     // alignItems: 'center',
+    borderTopColor: '#ff7400',
+    borderTopWidth: 2,
+    borderRadius: 20,
   },
   
   verticalLine: {

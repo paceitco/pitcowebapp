@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 import CartService from '../services/CartService';
 import { LinearGradient } from 'expo-linear-gradient';
-import { verticalScale } from 'react-native-size-matters';
+import { scale, verticalScale } from 'react-native-size-matters';
 import { useRoute } from '@react-navigation/native';
 import { HeaderTitle } from '@react-navigation/elements';
 // import LinearGradient from 'react-native-linear-gradient';
@@ -201,9 +201,10 @@ export const IntroductionView = ({ navigation }: any) => {
               
               {/* <br /> */}
               
-              <Text style={{ width: '80%', margin: 'auto', color: '#fff', textAlign: 'center', paddingBottom: verticalScale(10) }}>My current day-to-day stack is:</Text>
+              <Text style={{ width: '80%', margin: 'auto', color: '#fff', textAlign: 'center', paddingTop: verticalScale(20), paddingBottom: verticalScale(10) }}>My current day-to-day stack is:</Text>
 
-              <View style={{ width: '25%', margin: 'auto' }}>
+              {/* <View style={{ width: '25%', margin: 'auto', marginLeft: 'auto', marginRight: 'auto' }}> */}
+              {/* <View style={{ width: scale(200), alignItems: 'center',  }}> */}
                 <FlatList
                   data={items}
                   renderItem={renderItem}
@@ -220,7 +221,7 @@ export const IntroductionView = ({ navigation }: any) => {
                       rel="nofollow noopener noreferrer"
                   > 
                 */}
-              </View>
+              {/* </View> */}
           </SafeAreaView>
       </ScrollView>
   );
@@ -369,7 +370,8 @@ const styles = StyleSheet.create({
   priceText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
+    textAlign: 'center',
   },
 
   cartButton: {
@@ -591,10 +593,10 @@ const styles = StyleSheet.create({
 
   gridItem: {
     flex: 1,
-    margin: 5,
+    // margin: 5,
     // backgroundColor: '#fff',
     // borderRadius: 10,
-    padding: 10,
+    // padding: 10,
     elevation: 3,
   },
 
@@ -615,6 +617,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    alignContent: 'center',
+    // backgroundColor: 'red',
+    // textAlign: 'center',
+    alignSelf: 'center'
   },
 
   // priceText: {

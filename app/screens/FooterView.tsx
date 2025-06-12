@@ -1,6 +1,6 @@
 import { HeaderTitle } from '@react-navigation/elements';
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { Platform, SafeAreaView, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { verticalScale } from 'react-native-size-matters';
 import styled from 'styled-components';
@@ -33,7 +33,9 @@ import styled from 'styled-components';
 
 export const FooterView = ({ navigation, style }: any) => {
     return (
-        <SafeAreaView style={[{ bottom: verticalScale(-180), backgroundColor: '#56b4d3', }, style]}>
+        // <SafeAreaView style={[{ bottom: verticalScale(-180), backgroundColor: '#56b4d3', }, style]}>
+        // <SafeAreaView style={[{ bottom: verticalScale(10), backgroundColor: '#56b4d3', }, style]}>
+        <SafeAreaView style={[{ bottom: Platform.OS === 'web' ? '-10%' : '0%', backgroundColor: '#56b4d3', }, style]}>
             <View>
                 {/*
                     <Text style={{ width: '80%', textAlign: 'center', margin: '10px auto 0px auto', borderRadius: '10px', paddingTop: '10px', color: '#fff', backgroundColor: 'rgba(0,0,0,.4)' }}>

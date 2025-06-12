@@ -1,10 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Image, View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
+import { Animated, Image, View, TouchableOpacity, Text, StyleSheet, Dimensions, Platform } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 
-const MENU_Y_DEFAULT = -310; // -220;
-const MENU_ANIMATE_TO_Y = verticalScale(-80) // 10;
+const MENU_Y_DEFAULT = Platform.OS === 'web' ? -310 : -280; // -220;
+const MENU_ANIMATE_TO_Y = verticalScale(Platform.OS === 'web' ? -80 : 10) // 10;
 
 export const NavView = ({ navigation, style }: any) => {
   const slideAnim = useRef(new Animated.Value(MENU_Y_DEFAULT)).current;

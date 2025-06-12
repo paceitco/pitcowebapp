@@ -34,11 +34,14 @@ import FooterView from './FooterView';
 import NavView from './NavView';
 import Work from './Work';
 import TimelineView from './TimelineViewComponent';
-import MapView, { Marker, Provider } from 'react-native-maps';
+// import MapView, { Marker, Provider } from 'react-native-maps';
 // import PriceMarker from './common/PriceMarker';
 
-const { width, height } = Dimensions.get('window');
-const ASPECT_RATIO = width / height;
+
+
+// const { width, height } = Dimensions.get('window');
+// const ASPECT_RATIO = width / height;
+const ASPECT_RATIO = 1920 / 1080;
 const LATITUDE = -25.962626;
 const LONGITUDE = 28.164955;
 const LATITUDE_DELTA = 0.0999;
@@ -168,7 +171,7 @@ export const LandingScreen = ({ navigation, style }: any) => {
   const renderImageSlide = () => (
     <SafeAreaView  style={styles.slideshowContainer} {...panResponder.panHandlers}>
       <Image
-        source={{ uri: IMAGES[currentImageIndex] }}
+        source={{ uri: 'http://localhost:8081/' + IMAGES[currentImageIndex] }}
         style={styles.image}
         resizeMode="cover"
       />
@@ -206,20 +209,38 @@ export const LandingScreen = ({ navigation, style }: any) => {
     </SafeAreaView>
   );
 
+  // const renderCategoryCards = () => (
+  //   // <ScrollView>
+  //     <FlatList
+  //       horizontal
+  //       data={CATEGORY_CARDS}
+  //       keyExtractor={(item, index) => index.toString()}
+  //       showsHorizontalScrollIndicator={true}
+  //       contentContainerStyle={styles.categoryList}
+  //       style={styles.categoryListContainer}
+  //       renderItem={({ item }) => (
+  //           <SafeAreaView style={styles.categoryCard}>
+  //             <Image source={{ uri: item.icon }} style={styles.categoryIcon} />
+  //             <Text style={styles.categoryText}>{item.name}</Text>
+  //           </SafeAreaView>
+  //         )} />
+  //   // </ScrollView>
+  // );
+
   const renderCategoryCards = () => (
-      <FlatList
-        horizontal
-        data={CATEGORY_CARDS}
-        keyExtractor={(item, index) => index.toString()}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.categoryList}
-        style={styles.categoryListContainer}
-        renderItem={({ item }) => (
-          <SafeAreaView style={styles.categoryCard}>
-              <Image source={{ uri: item.icon }} style={styles.categoryIcon} />
-              <Text style={styles.categoryText}>{item.name}</Text>
-            </SafeAreaView>
-          )} />
+    <FlatList
+      horizontal
+      data={CATEGORY_CARDS}
+      keyExtractor={(item, index) => index.toString()}
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.categoryList}
+      renderItem={({ item }) => (
+        <TouchableOpacity style={styles.categoryCard}>
+          <Image source={{ uri: item.icon }} style={styles.categoryIcon} />
+          <Text style={styles.categoryText}>{item.name}</Text>
+        </TouchableOpacity>
+      )}
+    />
   );
 
   const renderMobileTopNav = () => (
@@ -290,8 +311,8 @@ export const LandingScreen = ({ navigation, style }: any) => {
   const workHistoryItems = [
     {
       id: 0,
-      year: '2015',
-      title: 'Patrish Mobile Nails (2015/03/01 ­- 2016/04/31)',
+      year: '2014',
+      title: 'Patrish Mobile Nails (2014/03/01 ­- 2016/04/31)',
       subtitle: '',
       description: 'My role at PMN was to help uplift the company’s online presence by developing and maintaining a modern, responsive and SEO compliant web application. For this project I initially used pHp with MySQL, and eventually rewrote the project in NodeJS.',
       position: 'left',
@@ -410,7 +431,7 @@ export const LandingScreen = ({ navigation, style }: any) => {
         <StackView key="stack-component" />
         {/* <ProjectsView key="projects-component" /> */}
         <PetProjectsView key="pet-projects-component" />
-        <FooterView key="footer-component" />
+        <FooterView key="footer-components" />
       </ScrollView>
     </LinearGradient>
   );
@@ -462,9 +483,10 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+
   searchBar: {
     position: 'absolute',
-    top: verticalScale(40),
+    top: verticalScale(80),
     left: 20,
     right: 20,
     backgroundColor: 'white',
@@ -476,24 +498,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: verticalScale(45),
   },
+
   searchIcon: {
     width: 20,
     height: 20,
     // tintColor: '#555',
     marginRight: 8,
   },
+
   searchInput: {
     flex: 1,
     fontSize: 16,
     color: '#000',
   },
+
   slideshowContainer: {
     borderRadius: scale(10),
     overflow: 'hidden',
     marginBottom: verticalScale(20),
     position: 'relative',
-    top: verticalScale(70),
+    top: verticalScale(110),
   },
+
   centeredCompanyName: {
     position: 'absolute',
     top: '45%',
@@ -503,6 +529,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 5,
   },
+
   companyNameText: {
     color: '#fff',
     fontSize: 22,
@@ -512,11 +539,13 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 6,
   },
+
   image: {
     width: '100%',
     height: verticalScale(300),
     borderRadius: scale(10),
   },
+
   centeredTextContainer: {
     position: 'absolute',
     top: '45%',
@@ -525,6 +554,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   starRating: {
     flexDirection: 'row',
     position: 'absolute',
@@ -534,11 +564,13 @@ const styles = StyleSheet.create({
     padding: scale(4),
     borderRadius: scale(6),
   },
+
   star: {
     width: scale(16),
     height: scale(16),
     marginRight: scale(2),
   },
+
   distanceBadge: {
     position: 'absolute',
     top: verticalScale(10),
@@ -548,10 +580,12 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(4),
     borderRadius: scale(6),
   },
+
   distanceText: {
     color: '#fff',
     fontSize: moderateScale(12),
   },
+
   popularityTag: {
     position: 'absolute',
     bottom: verticalScale(10),
@@ -561,10 +595,12 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(4),
     borderRadius: scale(6),
   },
+
   popularityText: {
     color: '#fff',
     fontSize: moderateScale(12),
   },
+  
   vipTag: {
     position: 'absolute',
     bottom: verticalScale(10),
@@ -574,16 +610,19 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(4),
     borderRadius: scale(6),
   },
+
   vipText: {
     color: '#fff',
     fontSize: moderateScale(12),
   },
+
   indicatorContainer: {
     position: 'absolute',
     bottom: verticalScale(10),
     alignSelf: 'center',
     flexDirection: 'row',
   },
+
   indicatorDot: {
     width: scale(8),
     height: scale(8),
@@ -591,33 +630,68 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     marginHorizontal: scale(3),
   },
+
   activeDot: {
     backgroundColor: '#000',
   },
+
   categoryListContainer: {
     top: verticalScale(60),
     maxHeight: verticalScale(75),
     backgroundColor: 'lightgrey',
     borderRadius: 10,
   },
-  categoryList: {
+
+  // categoryList: {
     // paddingVertical: verticalScale(50),
     // height: verticalScale(15),
     // backgroundColor: 'red',
+  // },
+
+  // categoryCard: {
+  //   alignItems: 'center',
+  //   marginHorizontal: scale(8),
+  //   width: scale(60),
+  // },
+
+  // categoryIcon: {
+  //   marginTop: verticalScale(4),
+  //   width: scale(20),
+  //   height: scale(20),
+  //   marginBottom: verticalScale(4),
+  // },
+
+  // categoryText: {
+  //   fontSize: moderateScale(10),
+  //   textAlign: 'center',
+  // },
+
+  categoryList: {
+    paddingHorizontal: scale(10),
+    marginTop: verticalScale(100),
   },
+
   categoryCard: {
+    width: scale(80),
+    height: verticalScale(60),
+    marginRight: scale(10),
+    backgroundColor: '#f0f0f0',
+    borderRadius: scale(10),
     alignItems: 'center',
-    marginHorizontal: scale(8),
-    width: scale(60),
+    justifyContent: 'center',
+    padding: scale(10),
   },
+
   categoryIcon: {
-    marginTop: verticalScale(4),
-    width: scale(20),
-    height: scale(20),
-    marginBottom: verticalScale(4),
+    width: scale(40),
+    height: scale(40),
+    marginBottom: verticalScale(5),
+    resizeMode: 'contain',
   },
+
   categoryText: {
-    fontSize: moderateScale(10),
     textAlign: 'center',
+    fontSize: moderateScale(12),
+    color: '#333',
   },
 });

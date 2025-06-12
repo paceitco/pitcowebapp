@@ -149,7 +149,7 @@ const soft_skills = [
 export const SkillsView = ({ navigation }: any) => {
     return (
         <View id="skills-container" style={{ padding: 10 }}>
-            <HeaderTitle style={{ textAlign: 'center', color: '#000', fontWeight: 'bold' }}>Skills Matrix</HeaderTitle>
+            <HeaderTitle style={{ textAlign: 'center', fontWeight: 'bold', color: '#fff' }}>Skills Matrix</HeaderTitle>
             <SafeAreaView
                 id="skill-bars-container"
                 className="row"
@@ -185,7 +185,7 @@ export const SkillsView = ({ navigation }: any) => {
                                                     width: 20,
                                                     height: 20,
                                                     backgroundColor: '#ff7400',
-                                                    borderRadius: '20px',
+                                                    borderRadius: 20,
                                                     marginTop: -13,
                                                     marginRight: 0,
                                                     marginBottom: 0,
@@ -238,13 +238,13 @@ export const SkillsView = ({ navigation }: any) => {
                                                         width: `${skill.level}%`,
                                                         height: 5,
                                                         backgroundColor: '#ff7400',
-                                                        borderRadius: '5px'
+                                                        borderRadius: 5
                                                     }} />
                                                 <View style={{
                                                     width: 20,
                                                     height: 20,
                                                     backgroundColor: '#ff7400',
-                                                    borderRadius: '20px',
+                                                    borderRadius: 20,
                                                     marginTop: -13,
                                                     marginRight: 0,
                                                     marginBottom: 0,
@@ -298,14 +298,14 @@ export const SkillsView = ({ navigation }: any) => {
                                                         width: `${skill.level}%`,
                                                         height: 5,
                                                         backgroundColor: '#ff7400',
-                                                        borderRadius: '5px'
+                                                        borderRadius: 5
                                                     }} />
                                                 <View
                                                     style={{
                                                         width: 20,
                                                         height: 20,
                                                         backgroundColor: '#ff7400',
-                                                        borderRadius: '20px',
+                                                        borderRadius: 20,
                                                         marginTop: -13,
                                                         marginRight: 0,
                                                         marginBottom: 0,
